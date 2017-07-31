@@ -1,0 +1,68 @@
+# Copyright (C) 2017 Nav Menu Trim
+# This file is distributed under the same license as the Nav Menu Trim package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Nav Menu Trim 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/nav-menu-trim\n"
+"POT-Creation-Date: 2017-07-30 17:22:03+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: inc/class-nav-menu-trim.php:215
+msgid "remove id attribute"
+msgstr ""
+
+#: inc/class-nav-menu-trim.php:234
+msgid ""
+"remove menu-item-* values of the class attribute (exclude menu-item-has-"
+"children)"
+msgstr ""
+
+#: inc/class-nav-menu-trim.php:253
+msgid ""
+"remove current-menu-* values of the class attribute (exclude current-menu-"
+"item)"
+msgstr ""
+
+#: inc/class-nav-menu-trim.php:272
+msgid "remove menu-item-has-children value of the class attribute"
+msgstr ""
+
+#: inc/class-nav-menu-trim.php:291
+msgid "remove current-menu-item value of the class attribute"
+msgstr ""
+
+#. #-#-#-#-#  nav-menu-trim.pot (Nav Menu Trim 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: inc/class-nav-menu-trim.php:298
+msgid "Nav Menu Trim"
+msgstr ""
+
+#: inc/class-nav-menu-trim.php:299
+msgid ""
+"Select the checkbox of id / class attributes in Menus you want to delete."
+msgstr ""
+
+#: inc/class-nav-menu-trim.php:353
+msgid "Settings"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/thingsym/nav-menu-trim"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "This WordPress plugin trim html id/class attributes of Nav Menu."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "thingsym"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.thingslabo.com/"
+msgstr ""
