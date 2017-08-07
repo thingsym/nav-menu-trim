@@ -21,5 +21,9 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 
 ## Changelog
 
+* Version 1.0.1
+	* fixed: fix .travis.yml
+	* fixed: fix trim_css_class function
+	* fixed: check exists class
 * Version 1.0.0
 	* initial release
