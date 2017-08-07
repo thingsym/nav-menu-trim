@@ -126,9 +126,6 @@ class Nav_Menu_Trim {
 		$trim_classes = array();
 		$options = $this->get_options();
 
-		if ( $options['id'] ) {
-			$trim_classes = array_merge( $trim_classes, $menu_item_classes );
-		}
 		if ( $options['menu-item'] ) {
 			$trim_classes = array_merge( $trim_classes, $menu_item_classes );
 		}
