@@ -361,7 +361,7 @@ class Nav_Menu_Trim {
 	 * uninstall hook
 	 *
 	 * @access public
-	 * @return string void
+	 * @return void
 	 *
 	 * @since 1.0.0
 	 */
