@@ -321,12 +321,16 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function customizer_print_styles() {
-		$css = '<style>';
-		$css .= '#customize-theme-controls #accordion-section-nav_menu_trim {';
-		$css .= 'margin-top: 3px;';
-		$css .= '}';
-		$css .= '</style>';
 		echo $css;
+		$css = <<< EOM
+<style>
+#customize-theme-controls #accordion-section-nav_menu_trim {
+	margin-top: 3px;
+}
+</style>
+
+EOM;
+
 	}
 
 	/**
