@@ -176,7 +176,7 @@ class Nav_Menu_Trim {
 			return apply_filters( 'nav_menu_trim_get_options', $options );
 		}
 
-		if ( isset( $options[ $option ] ) ) {
+		if ( array_key_exists( $option, $options ) ) {
 			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ] );
 		}
 		else {
