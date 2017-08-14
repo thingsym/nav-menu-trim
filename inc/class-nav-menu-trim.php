@@ -106,7 +106,7 @@ class Nav_Menu_Trim {
 			'menu-item-object-category',
 			'menu-item-object-tag',
 			'menu-item-object-page',
-			// menu-item-object-{custom}
+			// menu-item-object-{custom},
 			'menu-item-type-' . $item->type,
 			'menu-item-type-post_type',
 			'menu-item-type-taxonomy',
