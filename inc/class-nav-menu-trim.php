@@ -34,6 +34,17 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+		add_filter( 'init', array( $this, 'init' ) );
+	}
+
+	/**
+	 * init
+	 *
+	 * @access public
+	 *
+	 * @since 1.0.2
+	 */
+	public function init() {
 		add_filter( 'nav_menu_item_id', array( $this, 'trim_item_id' ), 10, 4 );
 		add_filter( 'nav_menu_css_class', array( $this, 'trim_css_class' ), 10, 4 );
 
