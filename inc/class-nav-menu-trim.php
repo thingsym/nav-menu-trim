@@ -321,7 +321,6 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function customizer_print_styles() {
-		echo $css;
 		$css = <<< EOM
 <style>
 #customize-theme-controls #accordion-section-nav_menu_trim {
@@ -331,6 +330,11 @@ class Nav_Menu_Trim {
 
 EOM;
 
+		$allowed_html = array(
+			'style' => array(),
+		);
+
+		echo wp_kses( $css, $allowed_html );
 	}
 
 	/**
