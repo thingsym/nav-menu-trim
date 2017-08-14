@@ -51,7 +51,7 @@ class Nav_Menu_Trim {
 		add_action( 'customize_register', array( $this, 'customizer' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_print_styles' ) );
 
-		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM_FILE__ ), array( $this, 'plugin_action_links' ) );
 		register_uninstall_hook( __NAV_MENU_TRIM_FILE__, array( __CLASS__, 'uninstall' ) );
 	}
 
@@ -344,19 +344,15 @@ class Nav_Menu_Trim {
 	/**
 	 * set link to customizer section on the plugins page.
 	 *
-	 * hooks to plugin_action_links
+	 * hooks to plugin_action_links_{$plugin_file}
 	 *
 	 * @access public
-	 * @param $links
-	 * @param $file
-	 * @return string $links
+	 * @param array $links
+	 * @return array $links
 	 *
 	 * @since 1.0.0
 	 */
-	function plugin_action_links( $links, $file ) {
-		if ( plugin_basename( __NAV_MENU_TRIM_FILE__ ) !== $file ) {
-			return $links;
-		}
+	function plugin_action_links( $links = array() ) {
 		$this->load_textdomain();
 		$settings_link = '<a href="customize.php?autofocus%5Bsection%5D=nav_menu_trim">' . __( 'Settings', 'nav-menu-trim' ) . '</a>';
 
