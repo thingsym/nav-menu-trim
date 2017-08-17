@@ -34,13 +34,24 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+		add_filter( 'init', array( $this, 'init' ) );
+	}
+
+	/**
+	 * init
+	 *
+	 * @access public
+	 *
+	 * @since 1.0.2
+	 */
+	public function init() {
 		add_filter( 'nav_menu_item_id', array( $this, 'trim_item_id' ), 10, 4 );
 		add_filter( 'nav_menu_css_class', array( $this, 'trim_css_class' ), 10, 4 );
 
 		add_action( 'customize_register', array( $this, 'customizer' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_print_styles' ) );
 
-		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM_FILE__ ), array( $this, 'plugin_action_links' ) );
 		register_uninstall_hook( __NAV_MENU_TRIM_FILE__, array( __CLASS__, 'uninstall' ) );
 	}
 
@@ -95,7 +106,7 @@ class Nav_Menu_Trim {
 			'menu-item-object-category',
 			'menu-item-object-tag',
 			'menu-item-object-page',
-			// menu-item-object-{custom}
+			// menu-item-object-{custom},
 			'menu-item-type-' . $item->type,
 			'menu-item-type-post_type',
 			'menu-item-type-taxonomy',
@@ -165,7 +176,7 @@ class Nav_Menu_Trim {
 			return apply_filters( 'nav_menu_trim_get_options', $options );
 		}
 
-		if ( isset( $options[ $option ] ) ) {
+		if ( array_key_exists( $option, $options ) ) {
 			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ] );
 		}
 		else {
@@ -310,12 +321,20 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function customizer_print_styles() {
-		$css = '<style>';
-		$css .= '#customize-theme-controls #accordion-section-nav_menu_trim {';
-		$css .= 'margin-top: 3px;';
-		$css .= '}';
-		$css .= '</style>';
-		echo $css;
+		$css = <<< EOM
+<style>
+#customize-theme-controls #accordion-section-nav_menu_trim {
+	margin-top: 3px;
+}
+</style>
+
+EOM;
+
+		$allowed_html = array(
+			'style' => array(),
+		);
+
+		echo wp_kses( $css, $allowed_html );
 	}
 
 	/**
@@ -333,19 +352,15 @@ class Nav_Menu_Trim {
 	/**
 	 * set link to customizer section on the plugins page.
 	 *
-	 * hooks to plugin_action_links
+	 * hooks to plugin_action_links_{$plugin_file}
 	 *
 	 * @access public
-	 * @param $links
-	 * @param $file
-	 * @return string $links
+	 * @param array $links
+	 * @return array $links
 	 *
 	 * @since 1.0.0
 	 */
-	function plugin_action_links( $links, $file ) {
-		if ( plugin_basename( __NAV_MENU_TRIM_FILE__ ) !== $file ) {
-			return $links;
-		}
+	function plugin_action_links( $links = array() ) {
 		$this->load_textdomain();
 		$settings_link = '<a href="customize.php?autofocus%5Bsection%5D=nav_menu_trim">' . __( 'Settings', 'nav-menu-trim' ) . '</a>';
 

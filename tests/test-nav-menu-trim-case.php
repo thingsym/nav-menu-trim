@@ -13,7 +13,7 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 	 */
 	function trim_id_case_1() {
 		$options = array(
-			'id' => 1,
+			'id'                     => 1,
 			'menu-item'              => 0,
 			'current-menu'           => 0,
 			'menu-item-has-children' => 0,
@@ -42,7 +42,7 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 	 */
 	function trim_id_case_2() {
 		$options = array(
-			'id' => 0,
+			'id'                     => 0,
 			'menu-item'              => 0,
 			'current-menu'           => 0,
 			'menu-item-has-children' => 0,

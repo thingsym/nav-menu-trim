@@ -7,10 +7,14 @@
  * Author URI:   https://management.thingslabo.com/
  * Text Domain:  nav-menu-trim
  * Domain Path:  /languages
- * Version:      1.0.1
+ * Version:      1.0.2
  *
  * @package      Nav_Menu_Trim
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 define( '__NAV_MENU_TRIM_FILE__', __FILE__ );
 
