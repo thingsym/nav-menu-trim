@@ -4,7 +4,7 @@ Link: https://github.com/thingsym/nav-menu-trim
 Tags: nav, menu
 Requires at least: 4.4
 Tested up to: 4.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,14 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 
 == Changelog ==
 
+= 1.0.2 =
+* fix tests
+* fix data validation via wp_kses
+* change output cdd to here document
+* fix option detect
+* change add_filter from plugin_action_links to plugin_action_links_{$plugin_file}
+* add init function
+* fix codesniffer.ruleset.xml
 = 1.0.1 =
 * fixed: fix .travis.yml
 * fixed: fix trim_css_class function
