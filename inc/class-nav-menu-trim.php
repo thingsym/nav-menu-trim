@@ -53,6 +53,8 @@ class Nav_Menu_Trim {
 
 		add_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM_FILE__ ), array( $this, 'plugin_action_links' ) );
 		register_uninstall_hook( __NAV_MENU_TRIM_FILE__, array( __CLASS__, 'uninstall' ) );
+
+		$this->load_textdomain();
 	}
 
 	/**
@@ -205,8 +207,6 @@ class Nav_Menu_Trim {
 			return;
 		}
 
-		$this->load_textdomain();
-
 		$wp_customize->add_setting(
 			'nav_menu_trim_options[id]',
 			array(
@@ -345,7 +345,7 @@ EOM;
 	 *
 	 * @since 1.0.0
 	 */
-	function load_textdomain() {
+	public function load_textdomain() {
 		load_plugin_textdomain( 'nav-menu-trim', false, $this->languages_path );
 	}
 
@@ -361,7 +361,6 @@ EOM;
 	 * @since 1.0.0
 	 */
 	function plugin_action_links( $links = array() ) {
-		$this->load_textdomain();
 		$settings_link = '<a href="customize.php?autofocus%5Bsection%5D=nav_menu_trim">' . __( 'Settings', 'nav-menu-trim' ) . '</a>';
 
 		array_unshift( $links, $settings_link );
