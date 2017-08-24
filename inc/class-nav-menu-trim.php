@@ -34,7 +34,7 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		add_filter( 'init', array( $this, 'init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	/**
