@@ -192,14 +192,15 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function get_options( $option = null ) {
-		$options = get_option( $this->option_name );
+		$options = get_option( $this->option_name, $this->default_options );
+		$options = array_merge( $this->default_options, $options );
 
 		if ( is_null( $option ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options );
+			return apply_filters( 'nav_menu_trim_get_options', $options, $option );
 		}
 
 		if ( array_key_exists( $option, $options ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ] );
+			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ], $option );
 		}
 		else {
 			return null;
