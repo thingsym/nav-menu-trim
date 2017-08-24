@@ -46,7 +46,7 @@ class Nav_Menu_Trim {
 	 */
 	public function init() {
 		add_filter( 'nav_menu_item_id', array( $this, 'trim_item_id' ), 10, 4 );
-		add_filter( 'nav_menu_css_class', array( $this, 'trim_css_class' ), 10, 4 );
+		add_filter( 'nav_menu_css_class', array( $this, 'trim_menu_css_class' ), 10, 4 );
 
 		add_action( 'customize_register', array( $this, 'customizer' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_print_styles' ) );
@@ -99,7 +99,7 @@ class Nav_Menu_Trim {
 	 *
 	 * @since 1.0.0
 	 */
-	public function trim_css_class( $classes, $item, $args, $depth ) {
+	public function trim_menu_css_class( $classes, $item, $args, $depth ) {
 		$menu_item_classes = array(
 			'menu-item',
 			'menu-item-object-' . $item->object,
