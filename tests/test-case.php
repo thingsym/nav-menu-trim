@@ -13,11 +13,12 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 	 */
 	function trim_id_case_1() {
 		$options = array(
-			'id'                     => 1,
-			'menu-item'              => 0,
-			'current-menu'           => 0,
-			'menu-item-has-children' => 0,
-			'current-menu-item'      => 0,
+			'id'                     => true,
+			'menu-item'              => false,
+			'current-menu'           => false,
+			'menu-item-has-children' => false,
+			'current-menu-item'      => false,
+			'sub-menu-class'         => false,
 		);
 
 		update_option( 'nav_menu_trim_options', $options );
@@ -29,7 +30,7 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 		$wp_post = get_post( $post );
 		$hook_classes = $this->_get_classes( $wp_post );
 
-		$classes = $this->nav_menu_trim->trim_css_class( $hook_classes, $wp_post, '', '' );
+		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
 
 		foreach ( $hook_classes as $key => $value ) {
 			$this->assertTrue( in_array( $value, $classes ) );
@@ -42,11 +43,12 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 	 */
 	function trim_id_case_2() {
 		$options = array(
-			'id'                     => 0,
-			'menu-item'              => 0,
-			'current-menu'           => 0,
-			'menu-item-has-children' => 0,
-			'current-menu-item'      => 0,
+			'id'                     => false,
+			'menu-item'              => false,
+			'current-menu'           => false,
+			'menu-item-has-children' => false,
+			'current-menu-item'      => false,
+			'sub-menu-class'         => false,
 		);
 
 		update_option( 'nav_menu_trim_options', $options );
@@ -58,7 +60,7 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 		$wp_post = get_post( $post );
 		$hook_classes = $this->_get_classes( $wp_post );
 
-		$classes = $this->nav_menu_trim->trim_css_class( $hook_classes, $wp_post, '', '' );
+		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
 
 		foreach ( $hook_classes as $key => $value ) {
 			$this->assertTrue( in_array( $value, $classes ) );
@@ -71,11 +73,12 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 	 */
 	function trim_classes_case_1() {
 		$options = array(
-			'id'                     => 0,
-			'menu-item'              => 1,
-			'current-menu'           => 1,
-			'menu-item-has-children' => 1,
-			'current-menu-item'      => 1,
+			'id'                     => false,
+			'menu-item'              => true,
+			'current-menu'           => true,
+			'menu-item-has-children' => true,
+			'current-menu-item'      => true,
+			'sub-menu-class'         => false,
 		);
 
 		update_option( 'nav_menu_trim_options', $options );
@@ -84,7 +87,7 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 		$wp_post = get_post( $post );
 		$hook_classes = $this->_get_classes( $wp_post );
 
-		$classes = $this->nav_menu_trim->trim_css_class( $hook_classes, $wp_post, '', '' );
+		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
 		$this->assertEquals( $classes, array() );
 	}
 
@@ -94,11 +97,12 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 	 */
 	function trim_classes_case_2() {
 		$options = array(
-			'id'                     => 0,
-			'menu-item'              => 1,
-			'current-menu'           => 1,
-			'menu-item-has-children' => 1,
-			'current-menu-item'      => 0,
+			'id'                     => false,
+			'menu-item'              => true,
+			'current-menu'           => true,
+			'menu-item-has-children' => true,
+			'current-menu-item'      => false,
+			'sub-menu-class'         => false,
 		);
 
 		update_option( 'nav_menu_trim_options', $options );
@@ -107,7 +111,7 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 		$wp_post = get_post( $post );
 		$hook_classes = $this->_get_classes( $wp_post );
 
-		$classes = $this->nav_menu_trim->trim_css_class( $hook_classes, $wp_post, '', '' );
+		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
 		$this->assertTrue( in_array( 'current-menu-item', $classes ) );
 		$this->assertEquals( 1, count( $classes ) );
 	}
@@ -118,11 +122,12 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 	 */
 	function trim_classes_case_3() {
 		$options = array(
-			'id'                     => 0,
-			'menu-item'              => 1,
-			'current-menu'           => 1,
-			'menu-item-has-children' => 0,
-			'current-menu-item'      => 0,
+			'id'                     => false,
+			'menu-item'              => true,
+			'current-menu'           => true,
+			'menu-item-has-children' => false,
+			'current-menu-item'      => false,
+			'sub-menu-class'         => false,
 		);
 
 		update_option( 'nav_menu_trim_options', $options );
@@ -131,7 +136,7 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 		$wp_post = get_post( $post );
 		$hook_classes = $this->_get_classes( $wp_post );
 
-		$classes = $this->nav_menu_trim->trim_css_class( $hook_classes, $wp_post, '', '' );
+		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
 		$this->assertTrue( in_array( 'current-menu-item', $classes ) );
 		$this->assertTrue( in_array( 'menu-item-has-children', $classes ) );
 		$this->assertEquals( 2, count( $classes ) );
@@ -173,5 +178,46 @@ class Nav_Menu_Trim_Case_Test extends WP_UnitTestCase {
 		);
 
 		return $classes;
+	}
+
+	/**
+	 * @test
+	 * @group trim
+	 */
+	function trim_submenu_classes_case() {
+		$options = array(
+			'id'                     => false,
+			'menu-item'              => false,
+			'current-menu'           => false,
+			'menu-item-has-children' => false,
+			'sub-menu-class'         => true,
+		);
+
+		update_option( 'nav_menu_trim_options', $options );
+
+		$hook_classes = array(
+			'sub-menu',
+		);
+
+		$classes = $this->nav_menu_trim->trim_submenu_css_class( $hook_classes, '', '' );
+		$this->assertFalse( in_array( 'sub-menu', $classes ) );
+
+		$options = array(
+			'id'                     => false,
+			'menu-item'              => false,
+			'current-menu'           => false,
+			'menu-item-has-children' => false,
+			'sub-menu-class'         => false,
+		);
+
+		update_option( 'nav_menu_trim_options', $options );
+
+		$hook_classes = array(
+			'sub-menu',
+		);
+
+		$classes = $this->nav_menu_trim->trim_submenu_css_class( $hook_classes, '', '' );
+		$this->assertTrue( in_array( 'sub-menu', $classes ) );
+
 	}
 }
