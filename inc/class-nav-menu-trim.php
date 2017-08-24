@@ -360,7 +360,7 @@ EOM;
 	 *
 	 * @since 1.0.0
 	 */
-	function plugin_action_links( $links = array() ) {
+	public function plugin_action_links( $links = array() ) {
 		$settings_link = '<a href="customize.php?autofocus%5Bsection%5D=nav_menu_trim">' . __( 'Settings', 'nav-menu-trim' ) . '</a>';
 
 		array_unshift( $links, $settings_link );
