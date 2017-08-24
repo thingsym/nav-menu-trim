@@ -27,6 +27,26 @@ class Nav_Menu_Trim {
 	protected $languages_path = 'nav-menu-trim/languages';
 
 	/**
+	 * @var array $default_options   default options
+	 *
+	 * @options array nav_menu_trim_options
+	 * @option bool id
+	 * @option bool menu-item
+	 * @option bool current-menu
+	 * @option bool menu-item-has-children
+	 * @option bool current-menu-item
+	 * @option bool sub-menu-class
+	 */
+	 protected $default_options = array(
+		'id'                     => false,
+		'menu-item'              => false,
+		'current-menu'           => false,
+		'menu-item-has-children' => false,
+		'current-menu-item'      => false,
+		'sub-menu-class'         => false,
+	);
+
+	/**
 	 * constructor
 	 *
 	 * @access public
@@ -192,13 +212,6 @@ class Nav_Menu_Trim {
 	 * @access public
 	 * @param $wp_customize Customizer object
 	 * @return void
-	 *
-	 * @options array nav_menu_trim_options
-	 * @option bool id
-	 * @option bool menu-item
-	 * @option bool current-menu
-	 * @option bool menu-item-has-children
-	 * @option bool current-menu-item
 	 *
 	 * @since 1.0.0
 	 */
