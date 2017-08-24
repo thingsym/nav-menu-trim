@@ -67,6 +67,7 @@ class Nav_Menu_Trim {
 	public function init() {
 		add_filter( 'nav_menu_item_id', array( $this, 'trim_item_id' ), 10, 4 );
 		add_filter( 'nav_menu_css_class', array( $this, 'trim_menu_css_class' ), 10, 4 );
+		add_filter( 'nav_menu_submenu_css_class', array( $this, 'trim_submenu_css_class' ), 10, 3 );
 
 		add_action( 'customize_register', array( $this, 'customizer' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_print_styles' ) );
@@ -171,6 +172,40 @@ class Nav_Menu_Trim {
 		if ( $options['current-menu-item'] ) {
 			$trim_classes[] = 'current-menu-item';
 		}
+
+		foreach ( $trim_classes as $class ) {
+			$key = array_search( $class, $classes );
+			if ( false !== $key ) {
+				unset( $classes[ $key ] );
+			}
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * trim html class attributes of Nav Menu submenu.
+	 *
+	 * hook to nav_menu_submenu_css_class
+	 * @see https://developer.wordpress.org/reference/hooks/nav_menu_submenu_css_class/
+	 * only WordPress version 4.8 later
+	 *
+	 * @access public
+	 * @param $classes
+	 * @param $args
+	 * @param $depth
+	 * @return array
+	 *
+	 * @since 1.0.3
+	 */
+	public function trim_submenu_css_class( $classes, $args, $depth ) {
+		$option = $this->get_options( 'sub-menu-class' );
+
+		if ( ! $option ) {
+			return $classes;
+		}
+
+		$trim_classes[] = 'sub-menu';
 
 		foreach ( $trim_classes as $class ) {
 			$key = array_search( $class, $classes );
@@ -311,6 +346,25 @@ class Nav_Menu_Trim {
 			'nav_menu_trim_options[current-menu-item]',
 			array(
 				'label'      => __( 'remove current-menu-item value of the class attribute', 'nav-menu-trim' ),
+				'section'    => 'nav_menu_trim',
+				'type'       => 'checkbox',
+			)
+		);
+
+		$wp_customize->add_setting(
+			'nav_menu_trim_options[sub-menu-class]',
+			array(
+				'type'              => $this->type,
+				'capability'        => $this->capability,
+				'default'           => false,
+				'sanitize_callback' => '',
+			)
+		);
+
+		$wp_customize->add_control(
+			'nav_menu_trim_options[sub-menu-class]',
+			array(
+				'label'      => __( 'remove sub-menu value of the submenu class attribute', 'nav-menu-trim' ),
 				'section'    => 'nav_menu_trim',
 				'type'       => 'checkbox',
 			)
