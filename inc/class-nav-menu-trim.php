@@ -37,7 +37,7 @@ class Nav_Menu_Trim {
 	 * @option bool current-menu-item
 	 * @option bool sub-menu-class
 	 */
-	 protected $default_options = array(
+	protected $default_options = array(
 		'id'                     => false,
 		'menu-item'              => false,
 		'current-menu'           => false,
