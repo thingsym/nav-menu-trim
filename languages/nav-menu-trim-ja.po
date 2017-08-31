@@ -36,6 +36,10 @@ msgstr "class 属性の menu-item-has-children 値を取り除く"
 msgid "remove current-menu-item value of the class attribute"
 msgstr "class 属性の current-menu-item 値を取り除く"
 
+#: inc/class-nav-menu-trim.php
+msgid "remove sub-menu value of the submenu class attribute"
+msgstr "サブメニューの class 属性の sub-menu 値を取り除く"
+
 #. #-#-#-#-#  nav-menu-trim.pot (Nav Menu Trim 1.0.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: inc/class-nav-menu-trim.php:298

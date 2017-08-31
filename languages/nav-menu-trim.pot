@@ -36,6 +36,10 @@ msgstr ""
 msgid "remove current-menu-item value of the class attribute"
 msgstr ""
 
+#: inc/class-nav-menu-trim.php
+msgid "remove sub-menu value of the submenu class attribute"
+msgstr ""
+
 #. #-#-#-#-#  nav-menu-trim.pot (Nav Menu Trim 1.0.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: inc/class-nav-menu-trim.php:298
