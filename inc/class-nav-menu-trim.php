@@ -230,6 +230,14 @@ class Nav_Menu_Trim {
 		$options = get_option( $this->option_name, $this->default_options );
 		$options = array_merge( $this->default_options, $options );
 
+		/**
+		 * Filters the options.
+		 *
+		 * @param array    $options     The options.
+		 * @param string   $option      The option name via argument.
+		 *
+		 * @since 1.0.0
+		 */
 		if ( is_null( $option ) ) {
 			return apply_filters( 'nav_menu_trim_get_options', $options, $option );
 		}
