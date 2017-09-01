@@ -1,37 +1,61 @@
 <?php
 /**
- * Class Nav_Menu_Trim
+ * Nav_Menu_Trim class
+ *
+ * @package Nav_Menu_Trim
+ *
+ * @since 1.0.0
+ */
+
+/**
+ * Core class Nav_Menu_Trim
  *
  * @since 1.0.0
  */
 class Nav_Menu_Trim {
 
 	/**
+	 * Protected value.
+	 *
+	 * @access protected
+	 *
 	 * @var string $option_name   option name
 	 */
 	protected $option_name = 'nav_menu_trim_options';
 
 	/**
+	 * Protected value.
+	 *
+	 * @access protected
+	 *
 	 * @var string $type   types of settings
 	 */
 	protected $type = 'option';
 
 	/**
+	 * Protected value.
+	 *
+	 * @access protected
+	 *
 	 * @var string $capability   types of capability
 	 */
 	protected $capability = 'manage_options';
 
 	/**
-	/**
-	 * @var array $default_options   default options
+	 * Protected value.
 	 *
-	 * @options array nav_menu_trim_options
-	 * @option bool id
-	 * @option bool menu-item
-	 * @option bool current-menu
-	 * @option bool menu-item-has-children
-	 * @option bool current-menu-item
-	 * @option bool sub-menu-class
+	 * @access protected
+	 *
+	 * @var array $default_options {
+	 *   default options
+	 *
+	 *   @type bool id
+	 *   @type bool menu-item
+	 *   @type bool current-menu
+	 *   @type bool menu-item-has-children
+	 *   @type bool current-menu-item
+	 *   @type bool sub-menu-class
+	 * }
 	 */
 	protected $default_options = array(
 		'id'                     => false,
@@ -43,7 +67,7 @@ class Nav_Menu_Trim {
 	);
 
 	/**
-	 * constructor
+	 * Constructor
 	 *
 	 * @access public
 	 *
@@ -54,7 +78,9 @@ class Nav_Menu_Trim {
 	}
 
 	/**
-	 * init
+	 * Initialize.
+	 *
+	 * Hooks to init
 	 *
 	 * @access public
 	 *
@@ -75,16 +101,19 @@ class Nav_Menu_Trim {
 	}
 
 	/**
-	 * trim html id attributes of Nav Menu.
+	 * Trim html id attributes of Nav Menu.
 	 *
-	 * hook to nav_menu_item_id
+	 * Hooks to nav_menu_item_id
+	 *
 	 * @see https://developer.wordpress.org/reference/hooks/nav_menu_item_id/
 	 *
 	 * @access public
-	 * @param $menu_id
-	 * @param $item
-	 * @param $args
-	 * @param $depth
+	 *
+	 * @param string   $menu_id The ID that is applied to the menu item's <li> element.
+	 * @param WP_Post  $item The current menu item.
+	 * @param stdClass $args An object of wp_nav_menu() arguments.
+	 * @param int      $depth Depth of menu item. Used for padding.
+	 *
 	 * @return string
 	 *
 	 * @since 1.0.0
@@ -100,16 +129,19 @@ class Nav_Menu_Trim {
 	}
 
 	/**
-	 * trim html class attributes of Nav Menu.
+	 * Trim html class attributes of Nav Menu.
 	 *
-	 * hook to nav_menu_css_class
+	 * Hooks to nav_menu_css_class
+	 *
 	 * @see https://developer.wordpress.org/reference/hooks/nav_menu_css_class/
 	 *
 	 * @access public
-	 * @param $classes
-	 * @param $item
-	 * @param $args
-	 * @param $depth
+	 *
+	 * @param array    $classes The CSS classes that are applied to the menu item's <li> element.
+	 * @param WP_Post  $item The current menu item.
+	 * @param stdClass $args An object of wp_nav_menu() arguments.
+	 * @param int      $depth Depth of menu item. Used for padding.
+	 *
 	 * @return array
 	 *
 	 * @link https://developer.wordpress.org/reference/functions/_wp_menu_item_classes_by_context/
@@ -125,7 +157,7 @@ class Nav_Menu_Trim {
 			'menu-item-object-category',
 			'menu-item-object-tag',
 			'menu-item-object-page',
-			// menu-item-object-{custom},
+			// menu-item-object-{custom}, @todo check duplicate values.
 			'menu-item-type-' . $item->type,
 			'menu-item-type-post_type',
 			'menu-item-type-taxonomy',
@@ -180,16 +212,19 @@ class Nav_Menu_Trim {
 	}
 
 	/**
-	 * trim html class attributes of Nav Menu submenu.
+	 * Trim html class attributes of Nav Menu submenu.
 	 *
-	 * hook to nav_menu_submenu_css_class
+	 * Hooks to nav_menu_submenu_css_class.
+	 * WordPress version 4.8 or later only function
+	 *
 	 * @see https://developer.wordpress.org/reference/hooks/nav_menu_submenu_css_class/
-	 * only WordPress version 4.8 later
 	 *
 	 * @access public
-	 * @param $classes
-	 * @param $args
-	 * @param $depth
+	 *
+	 * @param array    $classes The CSS classes that are applied to the menu <ul> element.
+	 * @param stdClass $args An object of wp_nav_menu() arguments.
+	 * @param int      $depth Depth of menu item. Used for padding.
+	 *
 	 * @return array
 	 *
 	 * @since 1.0.3
@@ -217,7 +252,9 @@ class Nav_Menu_Trim {
 	 * Returns the options array or value.
 	 *
 	 * @access public
-	 * @param string $option Optional
+	 *
+	 * @param string $option Optional. The option name.
+	 *
 	 * @return array|value
 	 *
 	 * @since 1.0.0
@@ -250,7 +287,9 @@ class Nav_Menu_Trim {
 	 * Options into the Customizer.
 	 *
 	 * @access public
-	 * @param $wp_customize Customizer object
+	 *
+	 * @param object $wp_customize The Customizer object.
+	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
@@ -387,9 +426,10 @@ class Nav_Menu_Trim {
 	}
 
 	/**
-	 * output style into the head of Customize Theme controls.
+	 * Output style into the head of Customize Theme controls.
 	 *
 	 * @access public
+	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
@@ -412,9 +452,10 @@ EOM;
 	}
 
 	/**
-	 * load textdomain
+	 * Load textdomain
 	 *
 	 * @access public
+	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
@@ -424,12 +465,16 @@ EOM;
 	}
 
 	/**
-	 * set link to customizer section on the plugins page.
+	 * Set link to customizer section on the plugins page.
 	 *
-	 * hooks to plugin_action_links_{$plugin_file}
+	 * Hooks to plugin_action_links_{$plugin_file}
+	 *
+	 * @see https://developer.wordpress.org/reference/hooks/plugin_action_links_plugin_file/
 	 *
 	 * @access public
-	 * @param array $links
+	 *
+	 * @param array $links An array of plugin action links.
+	 *
 	 * @return array $links
 	 *
 	 * @since 1.0.0
@@ -443,9 +488,10 @@ EOM;
 	}
 
 	/**
-	 * uninstall hook
+	 * Uninstall hook
 	 *
 	 * @access public
+	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
