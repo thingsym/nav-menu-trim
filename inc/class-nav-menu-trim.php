@@ -374,13 +374,15 @@ class Nav_Menu_Trim {
 			)
 		);
 
-		$wp_customize->add_section( 'nav_menu_trim', array(
-			'title'        => __( 'Nav Menu Trim', 'nav-menu-trim' ),
-			'description'  => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
-			'panel'        => 'nav_menus',
-			'priority'     => 1000,
-			'capability'   => $this->capability,
-		) );
+		$wp_customize->add_section(
+			'nav_menu_trim', array(
+				'title'        => __( 'Nav Menu Trim', 'nav-menu-trim' ),
+				'description'  => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
+				'panel'        => 'nav_menus',
+				'priority'     => 1000,
+				'capability'   => $this->capability,
+			)
+		);
 
 	}
 
