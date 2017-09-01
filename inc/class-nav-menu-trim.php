@@ -22,10 +22,6 @@ class Nav_Menu_Trim {
 	protected $capability = 'manage_options';
 
 	/**
-	 * @var string $languages_path   languages file path
-	 */
-	protected $languages_path = 'nav-menu-trim/languages';
-
 	/**
 	 * @var array $default_options   default options
 	 *
@@ -422,7 +418,7 @@ EOM;
 	 * @since 1.0.0
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'nav-menu-trim', false, $this->languages_path );
+		load_plugin_textdomain( 'nav-menu-trim', false, basename( dirname( __NAV_MENU_TRIM_FILE__ ) ) . '/languages' );
 	}
 
 	/**
