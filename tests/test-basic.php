@@ -1,6 +1,6 @@
 <?php
 
-class Nav_Menu_Trim_Basic_Test extends WP_UnitTestCase {
+class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();
@@ -11,7 +11,7 @@ class Nav_Menu_Trim_Basic_Test extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
-	function construct() {
+	function constructor() {
 		$this->assertEquals( 10, has_filter( 'init', array( $this->nav_menu_trim, 'init' ) ) );
 	}
 
@@ -21,6 +21,7 @@ class Nav_Menu_Trim_Basic_Test extends WP_UnitTestCase {
 	 */
 	function init() {
 		$this->nav_menu_trim->init();
+
 		$this->assertEquals( 10, has_filter( 'nav_menu_css_class', array( $this->nav_menu_trim, 'trim_menu_css_class' ) ) );
 		$this->assertEquals( 10, has_filter( 'nav_menu_item_id', array( $this->nav_menu_trim, 'trim_item_id' ) ) );
 		$this->assertEquals( 10, has_filter( 'nav_menu_submenu_css_class', array( $this->nav_menu_trim, 'trim_submenu_css_class' ) ) );
