@@ -1,44 +1,86 @@
 <?php
 /**
- * Class Nav_Menu_Trim
+ * Nav_Menu_Trim class
+ *
+ * @package Nav_Menu_Trim
+ *
+ * @since 1.0.0
+ */
+
+/**
+ * Core class Nav_Menu_Trim
  *
  * @since 1.0.0
  */
 class Nav_Menu_Trim {
 
 	/**
+	 * Protected value.
+	 *
+	 * @access protected
+	 *
 	 * @var string $option_name   option name
 	 */
 	protected $option_name = 'nav_menu_trim_options';
 
 	/**
+	 * Protected value.
+	 *
+	 * @access protected
+	 *
 	 * @var string $type   types of settings
 	 */
 	protected $type = 'option';
 
 	/**
+	 * Protected value.
+	 *
+	 * @access protected
+	 *
 	 * @var string $capability   types of capability
 	 */
 	protected $capability = 'manage_options';
 
 	/**
-	 * @var string $languages_path   languages file path
+	 * Protected value.
+	 *
+	 * @access protected
+	 *
+	 * @var array $default_options {
+	 *   default options
+	 *
+	 *   @type bool id
+	 *   @type bool menu-item
+	 *   @type bool current-menu
+	 *   @type bool menu-item-has-children
+	 *   @type bool current-menu-item
+	 *   @type bool sub-menu-class
+	 * }
 	 */
-	protected $languages_path = 'nav-menu-trim/languages';
+	protected $default_options = array(
+		'id'                     => false,
+		'menu-item'              => false,
+		'current-menu'           => false,
+		'menu-item-has-children' => false,
+		'current-menu-item'      => false,
+		'sub-menu-class'         => false,
+	);
 
 	/**
-	 * constructor
+	 * Constructor
 	 *
 	 * @access public
 	 *
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		add_filter( 'init', array( $this, 'init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	/**
-	 * init
+	 * Initialize.
+	 *
+	 * Hooks to init
 	 *
 	 * @access public
 	 *
@@ -46,26 +88,32 @@ class Nav_Menu_Trim {
 	 */
 	public function init() {
 		add_filter( 'nav_menu_item_id', array( $this, 'trim_item_id' ), 10, 4 );
-		add_filter( 'nav_menu_css_class', array( $this, 'trim_css_class' ), 10, 4 );
+		add_filter( 'nav_menu_css_class', array( $this, 'trim_menu_css_class' ), 10, 4 );
+		add_filter( 'nav_menu_submenu_css_class', array( $this, 'trim_submenu_css_class' ), 10, 3 );
 
 		add_action( 'customize_register', array( $this, 'customizer' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'customizer_print_styles' ) );
 
 		add_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM_FILE__ ), array( $this, 'plugin_action_links' ) );
 		register_uninstall_hook( __NAV_MENU_TRIM_FILE__, array( __CLASS__, 'uninstall' ) );
+
+		$this->load_textdomain();
 	}
 
 	/**
-	 * trim html id attributes of Nav Menu.
+	 * Trim html id attributes of Nav Menu.
 	 *
-	 * hook to nav_menu_item_id
+	 * Hooks to nav_menu_item_id
+	 *
 	 * @see https://developer.wordpress.org/reference/hooks/nav_menu_item_id/
 	 *
 	 * @access public
-	 * @param $menu_id
-	 * @param $item
-	 * @param $args
-	 * @param $depth
+	 *
+	 * @param string   $menu_id The ID that is applied to the menu item's <li> element.
+	 * @param WP_Post  $item The current menu item.
+	 * @param stdClass $args An object of wp_nav_menu() arguments.
+	 * @param int      $depth Depth of menu item. Used for padding.
+	 *
 	 * @return string
 	 *
 	 * @since 1.0.0
@@ -81,16 +129,19 @@ class Nav_Menu_Trim {
 	}
 
 	/**
-	 * trim html class attributes of Nav Menu.
+	 * Trim html class attributes of Nav Menu.
 	 *
-	 * hook to nav_menu_css_class
+	 * Hooks to nav_menu_css_class
+	 *
 	 * @see https://developer.wordpress.org/reference/hooks/nav_menu_css_class/
 	 *
 	 * @access public
-	 * @param $classes
-	 * @param $item
-	 * @param $args
-	 * @param $depth
+	 *
+	 * @param array    $classes The CSS classes that are applied to the menu item's <li> element.
+	 * @param WP_Post  $item The current menu item.
+	 * @param stdClass $args An object of wp_nav_menu() arguments.
+	 * @param int      $depth Depth of menu item. Used for padding.
+	 *
 	 * @return array
 	 *
 	 * @link https://developer.wordpress.org/reference/functions/_wp_menu_item_classes_by_context/
@@ -99,14 +150,14 @@ class Nav_Menu_Trim {
 	 *
 	 * @since 1.0.0
 	 */
-	public function trim_css_class( $classes, $item, $args, $depth ) {
+	public function trim_menu_css_class( $classes, $item, $args, $depth ) {
 		$menu_item_classes = array(
 			'menu-item',
 			'menu-item-object-' . $item->object,
 			'menu-item-object-category',
 			'menu-item-object-tag',
 			'menu-item-object-page',
-			// menu-item-object-{custom},
+			// menu-item-object-{custom}, @todo check duplicate values.
 			'menu-item-type-' . $item->type,
 			'menu-item-type-post_type',
 			'menu-item-type-taxonomy',
@@ -161,23 +212,71 @@ class Nav_Menu_Trim {
 	}
 
 	/**
+	 * Trim html class attributes of Nav Menu submenu.
+	 *
+	 * Hooks to nav_menu_submenu_css_class.
+	 * WordPress version 4.8 or later only function
+	 *
+	 * @see https://developer.wordpress.org/reference/hooks/nav_menu_submenu_css_class/
+	 *
+	 * @access public
+	 *
+	 * @param array    $classes The CSS classes that are applied to the menu <ul> element.
+	 * @param stdClass $args An object of wp_nav_menu() arguments.
+	 * @param int      $depth Depth of menu item. Used for padding.
+	 *
+	 * @return array
+	 *
+	 * @since 1.0.3
+	 */
+	public function trim_submenu_css_class( $classes, $args, $depth ) {
+		$option = $this->get_options( 'sub-menu-class' );
+
+		if ( ! $option ) {
+			return $classes;
+		}
+
+		$trim_classes[] = 'sub-menu';
+
+		foreach ( $trim_classes as $class ) {
+			$key = array_search( $class, $classes );
+			if ( false !== $key ) {
+				unset( $classes[ $key ] );
+			}
+		}
+
+		return $classes;
+	}
+
+	/**
 	 * Returns the options array or value.
 	 *
 	 * @access public
-	 * @param string $option Optional
+	 *
+	 * @param string $option Optional. The option name.
+	 *
 	 * @return array|value
 	 *
 	 * @since 1.0.0
 	 */
 	public function get_options( $option = null ) {
-		$options = get_option( $this->option_name );
+		$options = get_option( $this->option_name, $this->default_options );
+		$options = array_merge( $this->default_options, $options );
 
+		/**
+		 * Filters the options.
+		 *
+		 * @param array    $options     The options.
+		 * @param string   $option      The option name via argument.
+		 *
+		 * @since 1.0.0
+		 */
 		if ( is_null( $option ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options );
+			return apply_filters( 'nav_menu_trim_get_options', $options, $option );
 		}
 
 		if ( array_key_exists( $option, $options ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ] );
+			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ], $option );
 		}
 		else {
 			return null;
@@ -188,15 +287,10 @@ class Nav_Menu_Trim {
 	 * Options into the Customizer.
 	 *
 	 * @access public
-	 * @param $wp_customize Customizer object
-	 * @return void
 	 *
-	 * @options array nav_menu_trim_options
-	 * @option bool id
-	 * @option bool menu-item
-	 * @option bool current-menu
-	 * @option bool menu-item-has-children
-	 * @option bool current-menu-item
+	 * @param object $wp_customize The Customizer object.
+	 *
+	 * @return void
 	 *
 	 * @since 1.0.0
 	 */
@@ -204,8 +298,6 @@ class Nav_Menu_Trim {
 		if ( ! isset( $wp_customize ) ) {
 			return;
 		}
-
-		$this->load_textdomain();
 
 		$wp_customize->add_setting(
 			'nav_menu_trim_options[id]',
@@ -302,20 +394,42 @@ class Nav_Menu_Trim {
 			)
 		);
 
-		$wp_customize->add_section( 'nav_menu_trim', array(
-			'title'        => __( 'Nav Menu Trim', 'nav-menu-trim' ),
-			'description'  => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
-			'panel'        => 'nav_menus',
-			'priority'     => 1000,
-			'capability'   => $this->capability,
-		) );
+		$wp_customize->add_setting(
+			'nav_menu_trim_options[sub-menu-class]',
+			array(
+				'type'              => $this->type,
+				'capability'        => $this->capability,
+				'default'           => false,
+				'sanitize_callback' => '',
+			)
+		);
+
+		$wp_customize->add_control(
+			'nav_menu_trim_options[sub-menu-class]',
+			array(
+				'label'      => __( 'remove sub-menu value of the submenu class attribute', 'nav-menu-trim' ),
+				'section'    => 'nav_menu_trim',
+				'type'       => 'checkbox',
+			)
+		);
+
+		$wp_customize->add_section(
+			'nav_menu_trim', array(
+				'title'        => __( 'Nav Menu Trim', 'nav-menu-trim' ),
+				'description'  => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
+				'panel'        => 'nav_menus',
+				'priority'     => 1000,
+				'capability'   => $this->capability,
+			)
+		);
 
 	}
 
 	/**
-	 * output style into the head of Customize Theme controls.
+	 * Output style into the head of Customize Theme controls.
 	 *
 	 * @access public
+	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
@@ -338,30 +452,34 @@ EOM;
 	}
 
 	/**
-	 * load textdomain
+	 * Load textdomain
 	 *
 	 * @access public
+	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
 	 */
-	function load_textdomain() {
-		load_plugin_textdomain( 'nav-menu-trim', false, $this->languages_path );
+	public function load_textdomain() {
+		load_plugin_textdomain( 'nav-menu-trim', false, basename( dirname( __NAV_MENU_TRIM_FILE__ ) ) . '/languages' );
 	}
 
 	/**
-	 * set link to customizer section on the plugins page.
+	 * Set link to customizer section on the plugins page.
 	 *
-	 * hooks to plugin_action_links_{$plugin_file}
+	 * Hooks to plugin_action_links_{$plugin_file}
+	 *
+	 * @see https://developer.wordpress.org/reference/hooks/plugin_action_links_plugin_file/
 	 *
 	 * @access public
-	 * @param array $links
+	 *
+	 * @param array $links An array of plugin action links.
+	 *
 	 * @return array $links
 	 *
 	 * @since 1.0.0
 	 */
-	function plugin_action_links( $links = array() ) {
-		$this->load_textdomain();
+	public function plugin_action_links( $links = array() ) {
 		$settings_link = '<a href="customize.php?autofocus%5Bsection%5D=nav_menu_trim">' . __( 'Settings', 'nav-menu-trim' ) . '</a>';
 
 		array_unshift( $links, $settings_link );
@@ -370,9 +488,10 @@ EOM;
 	}
 
 	/**
-	 * uninstall hook
+	 * Uninstall hook
 	 *
 	 * @access public
+	 *
 	 * @return void
 	 *
 	 * @since 1.0.0

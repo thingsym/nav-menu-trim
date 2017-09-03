@@ -1,6 +1,6 @@
 <?php
 
-class Nav_Menu_Trim_Uninstall_Test extends WP_UnitTestCase {
+class Test_Nav_Menu_Trim_Uninstall extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();
@@ -13,11 +13,12 @@ class Nav_Menu_Trim_Uninstall_Test extends WP_UnitTestCase {
 	 */
 	function uninstall() {
 		$options = array(
-			'id'                     => 1,
-			'menu-item'              => 1,
-			'current-menu'           => 1,
-			'menu-item-has-children' => 1,
-			'current-menu-item'      => 1,
+			'id'                     => true,
+			'menu-item'              => true,
+			'current-menu'           => true,
+			'menu-item-has-children' => true,
+			'current-menu-item'      => true,
+			'sub-menu-class'         => true,
 		);
 
 		update_option( 'nav_menu_trim_options', $options );
