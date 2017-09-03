@@ -7,7 +7,7 @@
  * Author URI:   https://management.thingslabo.com/
  * Text Domain:  nav-menu-trim
  * Domain Path:  /languages
- * Version:      1.0.2
+ * Version:      1.1.0
  *
  * @package      Nav_Menu_Trim
  */
