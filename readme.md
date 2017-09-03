@@ -41,6 +41,17 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.1.0
+	* update screenshot
+	* fix PHPDoc comment
+	* remove $languages_path
+	* fix .travis.yml
+	* fix tests
+	* add nav_menu_submenu_css_class function
+	* fix get_options function
+	* add default_options
+	* fix load_textdomain
+	* rename funtion name from trim_css_class to trim_menu_css_class
 * Version 1.0.2
 	* fix tests
 	* fix data validation via wp_kses

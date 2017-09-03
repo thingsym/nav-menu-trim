@@ -2,9 +2,10 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
 Tags: nav, menu
-Requires at least: 3.9
+Requires at least: 3.7
 Tested up to: 4.8
-Stable tag: 1.0.2
+Requires PHP: 5.4
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +46,17 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.1.0 =
+* update screenshot
+* fix PHPDoc comment
+* remove $languages_path
+* fix .travis.yml
+* fix tests
+* add nav_menu_submenu_css_class function
+* fix get_options function
+* add default_options
+* fix load_textdomain
 
 = 1.0.2 =
 * fix tests
