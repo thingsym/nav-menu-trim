@@ -17,6 +17,7 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 ### Filter Hooks
 
 * `nav_menu_trim_get_options` - Filters the options
+* `nav_menu_trim_get_option` - Filters the option
 
 ## Screenshot
 
@@ -41,6 +42,13 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.1.1
+	* fix access modifier
+	* fix tests
+	* fix PHPDoc comment
+	* fix filter nav_menu_trim_get_options and nav_menu_trim_get_option
+	* change to add_action with load_textdomain
+	* add sanitize_checkbox
 * Version 1.1.0
 	* update screenshot
 	* fix PHPDoc comment
