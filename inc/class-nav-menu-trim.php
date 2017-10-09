@@ -262,19 +262,26 @@ class Nav_Menu_Trim {
 		$options = get_option( $this->option_name, $this->default_options );
 		$options = array_merge( $this->default_options, $options );
 
-		/**
-		 * Filters the options.
-		 *
-		 * @param array    $options     The options.
-		 * @param string   $option      The option name via argument.
-		 *
-		 * @since 1.0.0
-		 */
 		if ( is_null( $option ) ) {
+			/**
+			 * Filters the options.
+			 *
+			 * @param array    $options     The options.
+			 *
+			 * @since 1.0.0
+			 */
 			return apply_filters( 'nav_menu_trim_get_options', $options );
 		}
 
 		if ( array_key_exists( $option, $options ) ) {
+			/**
+			 * Filters the option.
+			 *
+			 * @param string   $value       The value of option.
+			 * @param string   $option      The option name via argument.
+			 *
+			 * @since 1.0.0
+			 */
 			return apply_filters( 'nav_menu_trim_get_option', $options[ $option ], $option );
 		}
 		else {
