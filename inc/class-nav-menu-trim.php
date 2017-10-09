@@ -305,7 +305,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -324,7 +324,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -343,7 +343,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -362,7 +362,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -381,7 +381,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -400,7 +400,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -423,6 +423,21 @@ class Nav_Menu_Trim {
 			)
 		);
 
+	}
+
+	/**
+	 * Checkbox sanitization callback.
+	 *
+	 * Sanitization callback for 'checkbox' type.
+	 *
+	 * @param bool $checked Whether the checkbox is checked.
+	 *
+	 * @return bool
+	 *
+	 * @since 1.1.1
+	 */
+	public function sanitize_checkbox( $checked = false ) {
+		return ( ( isset( $checked ) && true == $checked ) ? true : false );
 	}
 
 	/**
