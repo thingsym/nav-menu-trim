@@ -271,11 +271,11 @@ class Nav_Menu_Trim {
 		 * @since 1.0.0
 		 */
 		if ( is_null( $option ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options, $option );
+			return apply_filters( 'nav_menu_trim_get_options', $options );
 		}
 
 		if ( array_key_exists( $option, $options ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ], $option );
+			return apply_filters( 'nav_menu_trim_get_option', $options[ $option ], $option );
 		}
 		else {
 			return null;
