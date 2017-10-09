@@ -511,13 +511,13 @@ EOM;
 	/**
 	 * Uninstall hook
 	 *
-	 * @access public
+	 * @access public static
 	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
 	 */
-	public function uninstall() {
+	public static function uninstall() {
 		$nav_menu_trim = new Nav_Menu_Trim();
 		delete_option( $nav_menu_trim->option_name );
 	}
