@@ -74,6 +74,7 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'init', array( $this, 'init' ) );
 	}
 
@@ -96,8 +97,6 @@ class Nav_Menu_Trim {
 
 		add_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM_FILE__ ), array( $this, 'plugin_action_links' ) );
 		register_uninstall_hook( __NAV_MENU_TRIM_FILE__, array( __CLASS__, 'uninstall' ) );
-
-		$this->load_textdomain();
 	}
 
 	/**
