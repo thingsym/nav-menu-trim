@@ -74,6 +74,7 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'init', array( $this, 'init' ) );
 	}
 
@@ -96,8 +97,6 @@ class Nav_Menu_Trim {
 
 		add_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM_FILE__ ), array( $this, 'plugin_action_links' ) );
 		register_uninstall_hook( __NAV_MENU_TRIM_FILE__, array( __CLASS__, 'uninstall' ) );
-
-		$this->load_textdomain();
 	}
 
 	/**
@@ -263,20 +262,27 @@ class Nav_Menu_Trim {
 		$options = get_option( $this->option_name, $this->default_options );
 		$options = array_merge( $this->default_options, $options );
 
-		/**
-		 * Filters the options.
-		 *
-		 * @param array    $options     The options.
-		 * @param string   $option      The option name via argument.
-		 *
-		 * @since 1.0.0
-		 */
 		if ( is_null( $option ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options, $option );
+			/**
+			 * Filters the options.
+			 *
+			 * @param array    $options     The options.
+			 *
+			 * @since 1.0.0
+			 */
+			return apply_filters( 'nav_menu_trim_get_options', $options );
 		}
 
 		if ( array_key_exists( $option, $options ) ) {
-			return apply_filters( 'nav_menu_trim_get_options', $options[ $option ], $option );
+			/**
+			 * Filters the option.
+			 *
+			 * @param string   $value       The value of option.
+			 * @param string   $option      The option name via argument.
+			 *
+			 * @since 1.0.0
+			 */
+			return apply_filters( 'nav_menu_trim_get_option', $options[ $option ], $option );
 		}
 		else {
 			return null;
@@ -305,7 +311,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -324,7 +330,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -343,7 +349,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -362,7 +368,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -381,7 +387,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -400,7 +406,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => '',
+				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
 			)
 		);
 
@@ -423,6 +429,21 @@ class Nav_Menu_Trim {
 			)
 		);
 
+	}
+
+	/**
+	 * Checkbox sanitization callback.
+	 *
+	 * Sanitization callback for 'checkbox' type.
+	 *
+	 * @param bool $checked Whether the checkbox is checked.
+	 *
+	 * @return bool
+	 *
+	 * @since 1.1.1
+	 */
+	public function sanitize_checkbox( $checked = false ) {
+		return ( ( isset( $checked ) && true == $checked ) ? true : false );
 	}
 
 	/**
@@ -490,13 +511,13 @@ EOM;
 	/**
 	 * Uninstall hook
 	 *
-	 * @access public
+	 * @access public static
 	 *
 	 * @return void
 	 *
 	 * @since 1.0.0
 	 */
-	public function uninstall() {
+	public static function uninstall() {
 		$nav_menu_trim = new Nav_Menu_Trim();
 		delete_option( $nav_menu_trim->option_name );
 	}

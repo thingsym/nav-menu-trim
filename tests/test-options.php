@@ -58,4 +58,45 @@ class Test_Nav_Menu_Trim_Options extends WP_UnitTestCase {
 
 	}
 
+	/**
+	 * @test
+	 * @group options
+	 */
+	public function get_options_case_filters() {
+		$options = array(
+			'id'                     => true,
+			'menu-item'              => true,
+			'current-menu'           => true,
+			'menu-item-has-children' => true,
+			'current-menu-item'      => true,
+			'sub-menu-class'         => true,
+		);
+
+		update_option( 'nav_menu_trim_options', $options );
+
+		add_filter( 'nav_menu_trim_get_options', array( $this, '_filter_options' ), 10 );
+
+		$options = $this->nav_menu_trim->get_options();
+		$this->assertFalse( $options['id'] );
+
+		add_filter( 'nav_menu_trim_get_option', array( $this, '_filter_option' ), 10, 2 );
+
+		$options = $this->nav_menu_trim->get_options( 'menu-item' );
+		$this->assertFalse( $options );
+	}
+
+	public function _filter_options( $options ) {
+		$this->assertTrue( is_array( $options ) );
+
+		$options['id'] = false;
+		return $options;
+	}
+
+	public function _filter_option( $option, $name ) {
+		$this->assertTrue( $option );
+		$this->assertEquals( $name, 'menu-item' );
+
+		$option = false;
+		return $option;
+	}
 }
