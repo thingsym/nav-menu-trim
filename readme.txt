@@ -2,7 +2,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
 Tags: nav, menu
-Requires at least: 3.7
+Requires at least: 3.8
 Requires PHP: 5.4
 Tested up to: 4.8
 Stable tag: 1.1.1
