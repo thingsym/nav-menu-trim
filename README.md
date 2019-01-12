@@ -27,18 +27,27 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 ### Nav Menu Trim options
 <img src="screenshot-2.png">
 
+## WordPress Plugin Directory
+
+Nav Menu Trim is hosted on the WordPress Plugin Directory.
+
+[https://wordpress.org/plugins/nav-menu-trim/](https://wordpress.org/plugins/nav-menu-trim/)
+
 ## Test Matrix
 
 For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/nav-menu-trim)
 
-## Contributing
+## Contribution
 
 ### Patches and Bug Fixes
 
 Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
 
-* [nav-menu-trim - GitHub](https://github.com/thingsym/nav-menu-trim)
-* [Nav Menu Trim - WordPress Plugin](https://wordpress.org/plugins/nav-menu-trim/)
+1. Fork [Nav Menu Trim](https://github.com/thingsym/nav-menu-trim) from GitHub repository
+2. Create a feature branch: git checkout -b my-new-feature
+3. Commit your changes: git commit -am 'Add some feature'
+4. Push to the branch: git push origin my-new-feature
+5. Create new Pull Request
 
 ## Changelog
 
@@ -74,3 +83,7 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 	* fixed: check exists class
 * Version 1.0.0
 	* initial release
+
+## License
+
+Licensed under [GPLv2](https://www.gnu.org/licenses/gpl-2.0.html).
