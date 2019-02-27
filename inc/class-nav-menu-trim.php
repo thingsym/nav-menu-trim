@@ -185,7 +185,7 @@ class Nav_Menu_Trim {
 		);
 
 		$trim_classes = array();
-		$options = $this->get_options();
+		$options      = $this->get_options();
 
 		if ( $options['menu-item'] ) {
 			$trim_classes = array_merge( $trim_classes, $menu_item_classes );
@@ -201,7 +201,7 @@ class Nav_Menu_Trim {
 		}
 
 		foreach ( $trim_classes as $class ) {
-			$key = array_search( $class, $classes );
+			$key = array_search( $class, $classes, true );
 			if ( false !== $key ) {
 				unset( $classes[ $key ] );
 			}
@@ -238,7 +238,7 @@ class Nav_Menu_Trim {
 		$trim_classes[] = 'sub-menu';
 
 		foreach ( $trim_classes as $class ) {
-			$key = array_search( $class, $classes );
+			$key = array_search( $class, $classes, true );
 			if ( false !== $key ) {
 				unset( $classes[ $key ] );
 			}
@@ -318,9 +318,9 @@ class Nav_Menu_Trim {
 		$wp_customize->add_control(
 			'nav_menu_trim_options[id]',
 			array(
-				'label'      => __( 'remove id attribute', 'nav-menu-trim' ),
-				'section'    => 'nav_menu_trim',
-				'type'       => 'checkbox',
+				'label'   => __( 'remove id attribute', 'nav-menu-trim' ),
+				'section' => 'nav_menu_trim',
+				'type'    => 'checkbox',
 			)
 		);
 
@@ -337,9 +337,9 @@ class Nav_Menu_Trim {
 		$wp_customize->add_control(
 			'nav_menu_trim_options[menu-item]',
 			array(
-				'label'      => __( 'remove menu-item-* values of the class attribute (exclude menu-item-has-children)', 'nav-menu-trim' ),
-				'section'    => 'nav_menu_trim',
-				'type'       => 'checkbox',
+				'label'   => __( 'remove menu-item-* values of the class attribute (exclude menu-item-has-children)', 'nav-menu-trim' ),
+				'section' => 'nav_menu_trim',
+				'type'    => 'checkbox',
 			)
 		);
 
@@ -356,9 +356,9 @@ class Nav_Menu_Trim {
 		$wp_customize->add_control(
 			'nav_menu_trim_options[current-menu]',
 			array(
-				'label'      => __( 'remove current-menu-* values of the class attribute (exclude current-menu-item)', 'nav-menu-trim' ),
-				'section'    => 'nav_menu_trim',
-				'type'       => 'checkbox',
+				'label'   => __( 'remove current-menu-* values of the class attribute (exclude current-menu-item)', 'nav-menu-trim' ),
+				'section' => 'nav_menu_trim',
+				'type'    => 'checkbox',
 			)
 		);
 
@@ -375,9 +375,9 @@ class Nav_Menu_Trim {
 		$wp_customize->add_control(
 			'nav_menu_trim_options[menu-item-has-children]',
 			array(
-				'label'      => __( 'remove menu-item-has-children value of the class attribute', 'nav-menu-trim' ),
-				'section'    => 'nav_menu_trim',
-				'type'       => 'checkbox',
+				'label'   => __( 'remove menu-item-has-children value of the class attribute', 'nav-menu-trim' ),
+				'section' => 'nav_menu_trim',
+				'type'    => 'checkbox',
 			)
 		);
 
@@ -394,9 +394,9 @@ class Nav_Menu_Trim {
 		$wp_customize->add_control(
 			'nav_menu_trim_options[current-menu-item]',
 			array(
-				'label'      => __( 'remove current-menu-item value of the class attribute', 'nav-menu-trim' ),
-				'section'    => 'nav_menu_trim',
-				'type'       => 'checkbox',
+				'label'   => __( 'remove current-menu-item value of the class attribute', 'nav-menu-trim' ),
+				'section' => 'nav_menu_trim',
+				'type'    => 'checkbox',
 			)
 		);
 
@@ -413,19 +413,20 @@ class Nav_Menu_Trim {
 		$wp_customize->add_control(
 			'nav_menu_trim_options[sub-menu-class]',
 			array(
-				'label'      => __( 'remove sub-menu value of the submenu class attribute', 'nav-menu-trim' ),
-				'section'    => 'nav_menu_trim',
-				'type'       => 'checkbox',
+				'label'   => __( 'remove sub-menu value of the submenu class attribute', 'nav-menu-trim' ),
+				'section' => 'nav_menu_trim',
+				'type'    => 'checkbox',
 			)
 		);
 
 		$wp_customize->add_section(
-			'nav_menu_trim', array(
-				'title'        => __( 'Nav Menu Trim', 'nav-menu-trim' ),
-				'description'  => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
-				'panel'        => 'nav_menus',
-				'priority'     => 1000,
-				'capability'   => $this->capability,
+			'nav_menu_trim',
+			array(
+				'title'       => __( 'Nav Menu Trim', 'nav-menu-trim' ),
+				'description' => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
+				'panel'       => 'nav_menus',
+				'priority'    => 1000,
+				'capability'  => $this->capability,
 			)
 		);
 
@@ -443,7 +444,7 @@ class Nav_Menu_Trim {
 	 * @since 1.1.1
 	 */
 	public function sanitize_checkbox( $checked = false ) {
-		return ( ( isset( $checked ) && true == $checked ) ? true : false );
+		return ( ( isset( $checked ) && true === $checked ) ? true : false );
 	}
 
 	/**
@@ -509,7 +510,9 @@ EOM;
 	}
 
 	/**
-	 * Uninstall hook
+	 * Uninstall.
+	 *
+	 * Hooks to uninstall_hook
 	 *
 	 * @access public static
 	 *
