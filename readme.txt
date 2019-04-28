@@ -18,6 +18,7 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 = Filter Hooks =
 
 * `nav_menu_trim_get_options` - Filters the options
+* `nav_menu_trim_get_option` - Filters the option
 
 = Test Matrix =
 
@@ -82,3 +83,8 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 = 1.0.0 =
 * initial release
+
+== Upgrade Notice ==
+
+= 1.1.1 =
+* Requires at least version 3.8 of the WordPress
