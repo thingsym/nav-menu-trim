@@ -311,7 +311,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
 			)
 		);
 
@@ -330,7 +330,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
 			)
 		);
 
@@ -349,7 +349,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
 			)
 		);
 
@@ -368,7 +368,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
 			)
 		);
 
@@ -387,7 +387,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
 			)
 		);
 
@@ -406,7 +406,7 @@ class Nav_Menu_Trim {
 				'type'              => $this->type,
 				'capability'        => $this->capability,
 				'default'           => false,
-				'sanitize_callback' => array( $this, 'sanitize_checkbox' ),
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
 			)
 		);
 
@@ -433,9 +433,9 @@ class Nav_Menu_Trim {
 	}
 
 	/**
-	 * Checkbox sanitization callback.
+	 * Sanitization for callback.
 	 *
-	 * Sanitization callback for 'checkbox' type.
+	 * Sanitization for boolean type.
 	 *
 	 * @param bool $checked Whether the checkbox is checked.
 	 *
@@ -443,7 +443,7 @@ class Nav_Menu_Trim {
 	 *
 	 * @since 1.1.1
 	 */
-	public function sanitize_checkbox( $checked = false ) {
+	public function sanitize_boolean( $checked = false ) {
 		return ( ( isset( $checked ) && true === $checked ) ? true : false );
 	}
 
