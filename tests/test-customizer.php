@@ -11,11 +11,12 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 	 * @test
 	 * @group customizer
 	 */
-	function sanitize_checkbox() {
-		$this->assertTrue( $this->nav_menu_trim->sanitize_checkbox( true ) );
-		$this->assertFalse( $this->nav_menu_trim->sanitize_checkbox() );
-		$this->assertTrue( $this->nav_menu_trim->sanitize_checkbox( 1 ) );
-		$this->assertFalse( $this->nav_menu_trim->sanitize_checkbox( 0 ) );
+	function sanitize_boolean() {
+		$this->assertTrue( $this->nav_menu_trim->sanitize_boolean( true ) );
+		$this->assertFalse( $this->nav_menu_trim->sanitize_boolean( false ) );
+		$this->assertFalse( $this->nav_menu_trim->sanitize_boolean() );
+		$this->assertFalse( $this->nav_menu_trim->sanitize_boolean( 1 ) );
+		$this->assertFalse( $this->nav_menu_trim->sanitize_boolean( 0 ) );
 	}
 
 }
