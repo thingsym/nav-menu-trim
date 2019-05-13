@@ -5,7 +5,7 @@ Tags: nav, menu
 Requires at least: 3.8
 Requires PHP: 5.4
 Tested up to: 5.2.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,12 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.1.2 =
+* rename sanitize_callback function from sanitize_checkbox to sanitize_boolean
+* fix indent and reformat with phpcs and phpcbf
+* add composer.json for test
+* add static code analysis config
 
 = 1.1.1 =
 * fix access modifier
