@@ -51,6 +51,11 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.1.2
+	* rename sanitize_callback function from sanitize_checkbox to sanitize_boolean
+	* fix indent and reformat with phpcs and phpcbf
+	* add composer.json for test
+	* add static code analysis config
 * Version 1.1.1
 	* fix access modifier
 	* fix tests
@@ -83,6 +88,11 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 	* fixed: check exists class
 * Version 1.0.0
 	* initial release
+
+## Upgrade Notice
+
+* 1.1.1
+	* Requires at least version 3.8 of the WordPress
 
 ## License
 

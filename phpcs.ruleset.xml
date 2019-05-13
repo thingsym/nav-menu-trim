@@ -9,10 +9,8 @@
   <!-- Include the WordPress ruleset, with exclusions. -->
   <rule ref="WordPress">
     <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
-
-    <exclude name="WordPress.VIP" />
-
   </rule>
 
   <exclude-pattern>*/tests/*</exclude-pattern>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
 </ruleset>

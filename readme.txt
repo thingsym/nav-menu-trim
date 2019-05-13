@@ -4,8 +4,8 @@ Link: https://github.com/thingsym/nav-menu-trim
 Tags: nav, menu
 Requires at least: 3.8
 Requires PHP: 5.4
-Tested up to: 5.0.3
-Stable tag: 1.1.1
+Tested up to: 5.2.0
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,7 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 = Filter Hooks =
 
 * `nav_menu_trim_get_options` - Filters the options
+* `nav_menu_trim_get_option` - Filters the option
 
 = Test Matrix =
 
@@ -46,6 +47,12 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.1.2 =
+* rename sanitize_callback function from sanitize_checkbox to sanitize_boolean
+* fix indent and reformat with phpcs and phpcbf
+* add composer.json for test
+* add static code analysis config
 
 = 1.1.1 =
 * fix access modifier
@@ -82,3 +89,8 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 = 1.0.0 =
 * initial release
+
+== Upgrade Notice ==
+
+= 1.1.1 =
+* Requires at least version 3.8 of the WordPress

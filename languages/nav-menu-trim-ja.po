@@ -10,7 +10,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Thingsym\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 
 #: inc/class-nav-menu-trim.php:215
 msgid "remove id attribute"
