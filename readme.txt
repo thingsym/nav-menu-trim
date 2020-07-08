@@ -15,11 +15,6 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 
 This WordPress plugin trim html id/class attributes of Nav Menu.
 
-= Filter Hooks =
-
-* `nav_menu_trim_get_options` - Filters the options
-* `nav_menu_trim_get_option` - Filters the option
-
 = Test Matrix =
 
 For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/nav-menu-trim)
@@ -40,6 +35,11 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 3. Activate the plugin through the 'Plugins' menu in WordPress.
 4. Configure settings through the **Appearance > Customize > Menus > Nav Menu Trim** menu in WordPress.
 5. Have fun!
+
+= Filter hooks =
+
+* nav_menu_trim_get_options
+* nav_menu_trim_get_option
 
 == Screenshots ==
 
