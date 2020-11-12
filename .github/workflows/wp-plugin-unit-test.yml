@@ -9,7 +9,7 @@ on:
 
 jobs:
   plugin-test:
-    name: run ${{ matrix.os }} * PHP v${{ matrix.php }} * WordPress v${{ matrix.WP_VERSION }}
+    name: run ${{ matrix.os }} * PHP v${{ matrix.php }} * WordPress ${{ matrix.WP_VERSION }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -25,6 +25,7 @@ jobs:
           - 3306
         options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
         env:
+          MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     steps:
@@ -44,7 +45,7 @@ jobs:
         env:
           WP_VERSION: ${{ matrix.WP_VERSION }}
 
-      - name: run phpunit - WordPress v${{ matrix.WP_VERSION }}
+      - name: run phpunit - WordPress ${{ matrix.WP_VERSION }}
         env:
           WP_VERSION: ${{ matrix.WP_VERSION }}
         run: phpunit
