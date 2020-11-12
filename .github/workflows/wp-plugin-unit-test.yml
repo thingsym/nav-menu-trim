@@ -9,7 +9,7 @@ on:
 
 jobs:
   plugin-test:
-    name: run ${{ matrix.os }} * ${{ matrix.php }}
+    name: run ${{ matrix.os }} * PHP v${{ matrix.php }} * WordPress v${{ matrix.WP_VERSION }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -17,22 +17,34 @@ jobs:
         os: [ ubuntu-latest ]
         php: [ 7.1, 7.2, 7.3 , 7.4 ]
         WP_VERSION: [ latest, nightly ]
-        WP_MULTISITE: [ 0, 1 ]
+
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306
+        options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup PHP ${{ matrix.php }}
+      - name: setup PHP v${{ matrix.php }}
         uses: nanasess/setup-php@master
         with:
           php-version: ${{ matrix.php }}
 
+      - name: start MySQL
+        run: sudo /etc/init.d/mysql start
+
       - name: install wp tests
         run: bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
         shell: bash
-
-      - name: run phpunit
         env:
           WP_VERSION: ${{ matrix.WP_VERSION }}
-          WP_MULTISITE: ${{ matrix.WP_MULTISITE }}
+
+      - name: run phpunit - WordPress v${{ matrix.WP_VERSION }}
+        env:
+          WP_VERSION: ${{ matrix.WP_VERSION }}
         run: phpunit
