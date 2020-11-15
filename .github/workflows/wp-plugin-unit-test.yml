@@ -15,19 +15,20 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        php: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4' ]
+        php: [ '5.6', '7.1', '7.2', '7.3', '7.4' ]
         wordpress: [ latest, nightly ]
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup PHP v${{ matrix.php }}
-        uses: nanasess/setup-php@master
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl
 
       - name: Start MySQL
+        # See https://github.blog/changelog/2020-02-21-github-actions-breaking-change-ubuntu-virtual-environments-will-no-longer-start-the-mysql-service-automatically/
         run: sudo /etc/init.d/mysql start
 
       - name: Install PHPUnit
