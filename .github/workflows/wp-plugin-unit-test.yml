@@ -27,9 +27,9 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl, php-mysql
 
-      # require ext-mbstring * -> it is missing from your system. Install or enable PHP's mbstring extension.
       - name: Install mbstring
-        run: sudo apt-get install php70-php-mbstring
+        # require ext-mbstring * -> it is missing from your system. Install or enable PHP's mbstring extension.
+        run: sudo apt-get install php7.0-mbstring
         if: ${{ matrix.php == '7.0' }}
 
       - name: Start MySQL
