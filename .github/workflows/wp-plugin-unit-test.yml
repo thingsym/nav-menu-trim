@@ -25,6 +25,7 @@ jobs:
         uses: nanasess/setup-php@master
         with:
           php-version: ${{ matrix.php }}
+          extensions: mbstring, intl
 
       - name: Start MySQL
         run: sudo /etc/init.d/mysql start
