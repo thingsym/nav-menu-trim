@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - '**'
+      - '!trunk'
     tags-ignore:
       - '**'
   pull_request:
