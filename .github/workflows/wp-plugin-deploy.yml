@@ -3,7 +3,7 @@ name: WordPress Plugin deploy to WordPress.org
 on:
   push:
     tags:
-      - v*.*.*
+      - 'v*.*.*'
 
 jobs:
   tag:
