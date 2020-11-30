@@ -44,8 +44,8 @@ jobs:
         # MySQL8.0 default-character-set is utf8mb4.
         run: |
           mysql --help | grep my.cnf
-          sudo sed -i -e "s/default-character-set=utf8mb4/default-character-set=utf8/" /etc/my.cnf
-          sudo sed -i -e "s/character_set_server=utf8mb4/character_set_server=latin1/" /etc/my.cnf
+          sudo sed -i -e "s/default-character-set=utf8mb4/default-character-set=utf8/" /etc/mysql/my.cnf
+          sudo sed -i -e "s/character_set_server=utf8mb4/character_set_server=latin1/" /etc/mysql/my.cnf
         if: ${{ matrix.php == '5.6' }}
 
       - name: Start MySQL
