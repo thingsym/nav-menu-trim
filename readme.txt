@@ -17,7 +17,7 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 
 = Test Matrix =
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/nav-menu-trim)
+For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/nav-menu-trim/actions).
 
 = Contributing =
 

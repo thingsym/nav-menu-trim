@@ -1,6 +1,6 @@
 # Introducing Nav Menu Trim
 
-[![Build Status](https://travis-ci.org/thingsym/nav-menu-trim.svg?branch=master)](https://travis-ci.org/thingsym/nav-menu-trim)
+![WordPress Plugin Unit test](https://github.com/thingsym/nav-menu-trim/workflows/WordPress%20Plugin%20Unit%20test/badge.svg?branch=master)
 
 [![WordPress](https://img.shields.io/wordpress/v/nav-menu-trim.svg)](https://wordpress.org/plugins/nav-menu-trim/)
 
@@ -37,7 +37,7 @@ Nav Menu Trim is hosted on the WordPress Plugin Directory.
 
 ## Test Matrix
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/nav-menu-trim)
+For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/nav-menu-trim/actions).
 
 ## Contribution
 
