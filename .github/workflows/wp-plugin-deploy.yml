@@ -6,9 +6,9 @@ on:
       - 'v*.*.*'
 
 jobs:
-  tag:
-    name: New tag
-    runs-on: ubuntu-latest
+  release:
+    name: Release to WordPress.org via SVN
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - name: WordPress Plugin Deploy

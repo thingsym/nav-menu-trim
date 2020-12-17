@@ -3,7 +3,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
 Tags: nav, menu
 Stable tag: 1.1.2
-Tested up to: 5.5.3
+Tested up to: 5.6
 Requires at least: 3.8
 Requires PHP: 5.4
 License: GPLv2 or later
@@ -17,7 +17,7 @@ This WordPress plugin trim html id/class attributes of Nav Menu.
 
 = Test Matrix =
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/nav-menu-trim)
+For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/nav-menu-trim/actions).
 
 = Contributing =
 
