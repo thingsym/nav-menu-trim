@@ -1,6 +1,6 @@
 # Introducing Nav Menu Trim
 
-![WordPress Plugin Unit test](https://github.com/thingsym/nav-menu-trim/workflows/WordPress%20Plugin%20Unit%20test/badge.svg?branch=master)
+![WordPress Plugin Unit test](https://github.com/thingsym/nav-menu-trim/workflows/WordPress%20Plugin%20Unit%20test/badge.svg)
 
 [![WordPress](https://img.shields.io/wordpress/v/nav-menu-trim.svg)](https://wordpress.org/plugins/nav-menu-trim/)
 
