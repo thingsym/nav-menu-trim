@@ -16,6 +16,7 @@
 # Directories
 /.github        export-ignore
 /.wordpress-org export-ignore
+/assets         export-ignore
 /bin            export-ignore
 /tests          export-ignore
 /vendor         export-ignore
