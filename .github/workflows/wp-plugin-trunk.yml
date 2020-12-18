@@ -3,12 +3,13 @@ name: WordPress Plugin asset/readme update
 on:
   push:
     branches:
-      - 'trunk'
+      - 'svn-trunk'
 
 jobs:
   trunk:
     name: Push to trunk on WordPress.org via SVN
     runs-on: ubuntu-18.04
+
     steps:
       - uses: actions/checkout@v2
       - name: WordPress.org plugin asset/readme update
