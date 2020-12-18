@@ -12,6 +12,7 @@
 /phpmd.ruleset.xml export-ignore
 /phpstan.neon      export-ignore
 /phpunit.xml       export-ignore
+/README.md         export-ignore
 
 # Directories
 /.github        export-ignore
