@@ -28,8 +28,11 @@ jobs:
             wordpress: '5.1'
             allow_failures: "true"
           # compact(): Undefined variable: context
-          # WordPress 4.9.x does not support on PHP 7.3.0
           # https://core.trac.wordpress.org/ticket/46449
+          - os: ubuntu-18.04
+            php: '7.4'
+            wordpress: '4.9'
+            allow_failures: "true"
           - os: ubuntu-18.04
             php: '7.3'
             wordpress: '4.9'
