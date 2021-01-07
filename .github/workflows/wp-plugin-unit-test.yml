@@ -53,7 +53,7 @@ jobs:
         run: |
           mysql --help | grep my.cnf
           sudo sed -i -e "s/[mysqld]/[mysqld]\ndefault_authentication_plugin=mysql_native_password/" /etc/mysql/my.cnf
-        if: ${{ matrix.php == '5.6' || matrix.php == '7.0' || matrix.php == '7.1' || || matrix.php == '7.2' }}
+        if: ${{ matrix.php == '5.6' || matrix.php == '7.0' || matrix.php == '7.1' || matrix.php == '7.2' }}
 
       - name: Start MySQL
         # See https://github.blog/changelog/2020-02-21-github-actions-breaking-change-ubuntu-virtual-environments-will-no-longer-start-the-mysql-service-automatically/
