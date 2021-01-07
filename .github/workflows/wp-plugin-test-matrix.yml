@@ -22,11 +22,11 @@ jobs:
           - os: ubuntu-18.04
             php: '7.4'
             wordpress: '5.0'
-            allow_failures: true
+            allow_failures: "true"
           - os: ubuntu-18.04
             php: '7.4'
             wordpress: '5.1'
-            allow_failures: true
+            allow_failures: "true"
 
     env:
       PHP_VERSION: ${{ matrix.php }}
