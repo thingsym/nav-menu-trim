@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [ ubuntu-18.04 ]
         php: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4' ]
-        wordpress: [ '5.0', '5.1' ,latest, nightly ]
+        wordpress: [ '4.9', '5.0', '5.1' ,latest, nightly ]
         include:
           # Function get_magic_quotes_gpc() is deprecated
           - os: ubuntu-18.04
@@ -26,6 +26,13 @@ jobs:
           - os: ubuntu-18.04
             php: '7.4'
             wordpress: '5.1'
+            allow_failures: "true"
+          # compact(): Undefined variable: context
+          # WordPress 4.9.x does not support on PHP 7.3.0
+          # https://core.trac.wordpress.org/ticket/46449
+          - os: ubuntu-18.04
+            php: '7.3'
+            wordpress: '4.9'
             allow_failures: "true"
 
     env:
