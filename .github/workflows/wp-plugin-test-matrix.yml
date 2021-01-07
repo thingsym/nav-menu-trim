@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-18.04 ]
-        php: [ '5.3', '5.4', '5.5', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4' ]
-        wordpress: [ latest, nightly ]
+        php: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4' ]
+        wordpress: [ '4.9', '5.0', '5.1' ,latest, nightly ]
 
     env:
       PHP_VERSION: ${{ matrix.php }}
@@ -50,7 +50,7 @@ jobs:
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 5.0* ]] ; then
             composer global require "phpunit/phpunit=5.7.*|6.*"
           else
-            composer global require "phpunit/phpunit=5.4.*|5.7.*|6.*|7.*"
+            composer global require "phpunit/phpunit=4.8.*|5.4.*|5.7.*|6.*|7.*"
           fi
 
       - name: Install wp tests
