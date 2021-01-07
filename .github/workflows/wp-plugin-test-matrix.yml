@@ -50,7 +50,7 @@ jobs:
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 5.0* ]] ; then
             composer global require "phpunit/phpunit=5.7.*|6.*"
           else
-            composer global require "phpunit/phpunit=4.8.*|5.4.*|5.7.*|6.*|7.*"
+            composer global require "phpunit/phpunit=5.4.*|5.7.*|6.*|7.*"
           fi
 
       - name: Install wp tests
