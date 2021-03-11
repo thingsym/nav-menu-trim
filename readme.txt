@@ -1,9 +1,10 @@
 === Nav Menu Trim ===
 Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
+Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
 Stable tag: 1.1.2
-Tested up to: 5.6
+Tested up to: 5.7.0
 Requires at least: 3.8
 Requires PHP: 5.4
 License: GPLv2 or later
@@ -47,6 +48,19 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.2.0 =
+* tested up to 5.7.0
+* add composer scripts
+* update japanese translation
+* update pot
+* add test case
+* change constant name
+* add sponsor link
+* add FUNDING.yml
+* add donate link
+* update wordpress-test-matrix
+* add GitHub actions for CI/CD, remove .travis.yml
 
 = 1.1.2 =
 * rename sanitize_callback function from sanitize_checkbox to sanitize_boolean

@@ -30,7 +30,8 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_action( 'customize_register', array( $this->nav_menu_trim, 'customizer' ) ) );
 		$this->assertEquals( 10, has_action( 'customize_controls_print_styles', array( $this->nav_menu_trim, 'customizer_print_styles' ) ) );
 
-		$this->assertEquals( 10, has_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM_FILE__ ), array( $this->nav_menu_trim, 'plugin_action_links' ) ) );
+		$this->assertEquals( 10, has_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM__ ), array( $this->nav_menu_trim, 'plugin_action_links' ) ) );
+		$this->assertEquals( 10, has_filter( 'plugin_row_meta', array( $this->nav_menu_trim, 'plugin_metadata_links' ) ) );
 	}
 
 	/**
@@ -49,6 +50,14 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	function plugin_action_links() {
 		$links = $this->nav_menu_trim->plugin_action_links( array() );
 		$this->assertContains( 'customize.php?autofocus%5Bsection%5D=nav_menu_trim', $links[0] );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function plugin_metadata_links() {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 	}
 
 }

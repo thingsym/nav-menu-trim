@@ -1,9 +1,5 @@
 # Introducing Nav Menu Trim
 
-![WordPress Plugin Unit test](https://github.com/thingsym/nav-menu-trim/workflows/WordPress%20Plugin%20Unit%20test/badge.svg)
-
-[![WordPress](https://img.shields.io/wordpress/v/nav-menu-trim.svg)](https://wordpress.org/plugins/nav-menu-trim/)
-
 This WordPress plugin trim html id/class attributes of Nav Menu.
 
 ## Installation
@@ -53,6 +49,18 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.2.0
+	* tested up to 5.7.0
+	* add composer scripts
+	* update japanese translation
+	* update pot
+	* add test case
+	* change constant name
+	* add sponsor link
+	* add FUNDING.yml
+	* add donate link
+	* update wordpress-test-matrix
+	* add GitHub actions for CI/CD, remove .travis.yml
 * Version 1.1.2
 	* rename sanitize_callback function from sanitize_checkbox to sanitize_boolean
 	* fix indent and reformat with phpcs and phpcbf
