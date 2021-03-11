@@ -49,6 +49,19 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 == Changelog ==
 
+= 1.2.0 =
+* tested up to 5.7.0
+* add composer scripts
+* update japanese translation
+* update pot
+* add test case
+* change constant name
+* add sponsor link
+* add FUNDING.yml
+* add donate link
+* update wordpress-test-matrix
+* add GitHub actions for CI/CD, remove .travis.yml
+
 = 1.1.2 =
 * rename sanitize_callback function from sanitize_checkbox to sanitize_boolean
 * fix indent and reformat with phpcs and phpcbf
