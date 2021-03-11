@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( '__NAV_MENU_TRIM_FILE__', __FILE__ );
+define( '__NAV_MENU_TRIM__', __FILE__ );
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/class-nav-menu-trim.php';
 
