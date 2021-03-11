@@ -1,71 +1,72 @@
-# Copyright (C) 2017 Nav Menu Trim
-# This file is distributed under the same license as the Nav Menu Trim package.
+# Copyright (C) 2021 thingsym
+# This file is distributed under the same license as the Nav Menu Trim plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nav Menu Trim 1.0.0\n"
+"Project-Id-Version: Nav Menu Trim 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/nav-menu-trim\n"
-"POT-Creation-Date: 2017-07-30 17:22:03+00:00\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Thingsym\n"
+"POT-Creation-Date: 2021-03-11T06:40:21+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: nav-menu-trim\n"
 
-#: inc/class-nav-menu-trim.php:215
-msgid "remove id attribute"
-msgstr "id 属性を取り除く"
-
-#: inc/class-nav-menu-trim.php:234
-msgid ""
-"remove menu-item-* values of the class attribute (exclude menu-item-has-"
-"children)"
-msgstr "class 属性の menu-item-* 値を取り除く (menu-item-has-children を除く)"
-
-#: inc/class-nav-menu-trim.php:253
-msgid ""
-"remove current-menu-* values of the class attribute (exclude current-menu-"
-"item)"
-msgstr "class 属性の current-menu-* 値を取り除く (current-menu-item を除く)"
-
-#: inc/class-nav-menu-trim.php:272
-msgid "remove menu-item-has-children value of the class attribute"
-msgstr "class 属性の menu-item-has-children 値を取り除く"
-
-#: inc/class-nav-menu-trim.php:291
-msgid "remove current-menu-item value of the class attribute"
-msgstr "class 属性の current-menu-item 値を取り除く"
-
-#: inc/class-nav-menu-trim.php
-msgid "remove sub-menu value of the submenu class attribute"
-msgstr "サブメニューの class 属性の sub-menu 値を取り除く"
-
-#. #-#-#-#-#  nav-menu-trim.pot (Nav Menu Trim 1.0.0)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: inc/class-nav-menu-trim.php:298
+#. Plugin Name of the plugin
+#: inc/class-nav-menu-trim.php:426
 msgid "Nav Menu Trim"
 msgstr "Nav Menu Trim"
 
-#: inc/class-nav-menu-trim.php:299
-msgid ""
-"Select the checkbox of id / class attributes in Menus you want to delete."
-msgstr "取り除きたいメニューの id / class 属性を選んでください。"
-
-#: inc/class-nav-menu-trim.php:353
-msgid "Settings"
-msgstr "設定"
-
-#. Plugin URI of the plugin/theme
+#. Plugin URI of the plugin
 msgid "https://github.com/thingsym/nav-menu-trim"
-msgstr ""
+msgstr "https://github.com/thingsym/nav-menu-trim"
 
-#. Description of the plugin/theme
+#. Description of the plugin
 msgid "This WordPress plugin trim html id/class attributes of Nav Menu."
 msgstr "このプラグインは Nav Menu の id/class 属性を整えます。"
 
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "thingsym"
-msgstr ""
+msgstr "thingsym"
 
-#. Author URI of the plugin/theme
-msgid "https://www.thingslabo.com/"
-msgstr ""
+#. Author URI of the plugin
+msgid "https://management.thingslabo.com/"
+msgstr "https://management.thingslabo.com/"
+
+#: inc/class-nav-menu-trim.php:322
+msgid "remove id attribute"
+msgstr "id 属性を取り除く"
+
+#: inc/class-nav-menu-trim.php:341
+msgid "remove menu-item-* values of the class attribute (exclude menu-item-has-children)"
+msgstr "class 属性の menu-item-* 値を取り除く (menu-item-has-children を除く)"
+
+#: inc/class-nav-menu-trim.php:360
+msgid "remove current-menu-* values of the class attribute (exclude current-menu-item)"
+msgstr "class 属性の current-menu-* 値を取り除く (current-menu-item を除く)"
+
+#: inc/class-nav-menu-trim.php:379
+msgid "remove menu-item-has-children value of the class attribute"
+msgstr "class 属性の menu-item-has-children 値を取り除く"
+
+#: inc/class-nav-menu-trim.php:398
+msgid "remove current-menu-item value of the class attribute"
+msgstr "class 属性の current-menu-item 値を取り除く"
+
+#: inc/class-nav-menu-trim.php:417
+msgid "remove sub-menu value of the submenu class attribute"
+msgstr "サブメニューの class 属性の sub-menu 値を取り除く"
+
+#: inc/class-nav-menu-trim.php:427
+msgid "Select the checkbox of id / class attributes in Menus you want to delete."
+msgstr "取り除きたいメニューの id / class 属性を選んでください。"
+
+#: inc/class-nav-menu-trim.php:512
+msgid "Become a sponsor"
+msgstr "スポンサーになる"
+
+#: inc/class-nav-menu-trim.php:534
+msgid "Settings"
+msgstr "設定"
