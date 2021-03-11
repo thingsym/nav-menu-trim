@@ -1,6 +1,7 @@
 === Nav Menu Trim ===
 Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
+Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
 Stable tag: 1.1.2
 Tested up to: 5.6
