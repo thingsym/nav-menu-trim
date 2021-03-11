@@ -19,7 +19,7 @@ class Nav_Menu_Trim {
 	 *
 	 * @access protected
 	 *
-	 * @var string $option_name   option name
+	 * @var string $option_group   The group name of option
 	 */
 	protected $option_name = 'nav_menu_trim_options';
 
