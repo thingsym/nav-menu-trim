@@ -27,6 +27,9 @@
       "@phpcs",
       "@phpmd",
       "@phpstan"
-    ]
+    ],
+    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../nav-menu-trim ../nav-menu-trim/languages/nav-menu-trim.pot",
+    "makepot:wpcli": "wp i18n make-pot ./ ./languages/nav-menu-trim.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "msgfmt:ja": "msgfmt languages/nav-menu-trim-ja.po -o languages/nav-menu-trim-ja.mo"
   }
 }
