@@ -11,6 +11,26 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
+	function public_value() {
+		$this->assertEquals( 'nav_menu_trim_options', $this->nav_menu_trim->option_name );
+		$this->assertEquals( 'option', $this->nav_menu_trim->type );
+		$this->assertEquals( 'manage_options', $this->nav_menu_trim->capability );
+
+		$expected = array(
+			'id'                     => false,
+			'menu-item'              => false,
+			'current-menu'           => false,
+			'menu-item-has-children' => false,
+			'current-menu-item'      => false,
+			'sub-menu-class'         => false,
+		);
+		$this->assertEquals( $expected, $this->nav_menu_trim->default_options );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
 	function constructor() {
 		$this->assertEquals( 10, has_filter( 'init', array( $this->nav_menu_trim, 'load_textdomain' ) ) );
 		$this->assertEquals( 10, has_filter( 'init', array( $this->nav_menu_trim, 'init' ) ) );
