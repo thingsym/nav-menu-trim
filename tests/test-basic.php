@@ -69,7 +69,7 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 */
 	function plugin_action_links() {
 		$links = $this->nav_menu_trim->plugin_action_links( array() );
-		$this->assertContains( 'customize.php?autofocus%5Bsection%5D=nav_menu_trim', $links[0] );
+		$this->assertContains( '<a href="customize.php?autofocus%5Bsection%5D=nav_menu_trim">Settings</a>', $links );
 	}
 
 	/**
@@ -77,7 +77,8 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function plugin_metadata_links() {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$links = $this->nav_menu_trim->plugin_metadata_links( array(), plugin_basename( __NAV_MENU_TRIM__ ) );
+		$this->assertContains( '<a href="https://github.com/sponsors/thingsym">Become a sponsor</a>', $links );
 	}
 
 }
