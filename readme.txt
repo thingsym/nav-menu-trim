@@ -3,7 +3,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
 Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Tested up to: 5.8.0
 Requires at least: 3.8
 Requires PHP: 5.4
@@ -48,6 +48,14 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.2.1 =
+* add test case for customizer
+* update composer dependencies
+* change from protected variable to public variable for unit test
+* add timeout-minutes to workflows
+* add phpunit-polyfills
+* tested up to 5.8.0
 
 = 1.2.0 =
 * tested up to 5.7.0
