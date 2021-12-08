@@ -15,36 +15,36 @@
 class Nav_Menu_Trim {
 
 	/**
-	 * Protected value.
+	 * Public variable.
 	 *
-	 * @access protected
+	 * @access public
 	 *
 	 * @var string $option_group   The group name of option
 	 */
-	protected $option_name = 'nav_menu_trim_options';
+	public $option_name = 'nav_menu_trim_options';
 
 	/**
-	 * Protected value.
+	 * Public variable.
 	 *
-	 * @access protected
+	 * @access public
 	 *
 	 * @var string $type   types of settings
 	 */
-	protected $type = 'option';
+	public $type = 'option';
 
 	/**
-	 * Protected value.
+	 * Public variable.
 	 *
-	 * @access protected
+	 * @access public
 	 *
 	 * @var string $capability   types of capability
 	 */
-	protected $capability = 'manage_options';
+	public $capability = 'manage_options';
 
 	/**
-	 * Protected value.
+	 * Public variable.
 	 *
-	 * @access protected
+	 * @access public
 	 *
 	 * @var array $default_options {
 	 *   default options
@@ -57,7 +57,7 @@ class Nav_Menu_Trim {
 	 *   @type bool sub-menu-class
 	 * }
 	 */
-	protected $default_options = array(
+	public $default_options = array(
 		'id'                     => false,
 		'menu-item'              => false,
 		'current-menu'           => false,

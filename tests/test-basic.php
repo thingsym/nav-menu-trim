@@ -11,6 +11,26 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
+	function public_value() {
+		$this->assertEquals( 'nav_menu_trim_options', $this->nav_menu_trim->option_name );
+		$this->assertEquals( 'option', $this->nav_menu_trim->type );
+		$this->assertEquals( 'manage_options', $this->nav_menu_trim->capability );
+
+		$expected = array(
+			'id'                     => false,
+			'menu-item'              => false,
+			'current-menu'           => false,
+			'menu-item-has-children' => false,
+			'current-menu-item'      => false,
+			'sub-menu-class'         => false,
+		);
+		$this->assertEquals( $expected, $this->nav_menu_trim->default_options );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
 	function constructor() {
 		$this->assertEquals( 10, has_filter( 'init', array( $this->nav_menu_trim, 'load_textdomain' ) ) );
 		$this->assertEquals( 10, has_filter( 'init', array( $this->nav_menu_trim, 'init' ) ) );
@@ -49,7 +69,7 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 */
 	function plugin_action_links() {
 		$links = $this->nav_menu_trim->plugin_action_links( array() );
-		$this->assertContains( 'customize.php?autofocus%5Bsection%5D=nav_menu_trim', $links[0] );
+		$this->assertContains( '<a href="customize.php?autofocus%5Bsection%5D=nav_menu_trim">Settings</a>', $links );
 	}
 
 	/**
@@ -57,7 +77,8 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function plugin_metadata_links() {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$links = $this->nav_menu_trim->plugin_metadata_links( array(), plugin_basename( __NAV_MENU_TRIM__ ) );
+		$this->assertContains( '<a href="https://github.com/sponsors/thingsym">Become a sponsor</a>', $links );
 	}
 
 }
