@@ -47,7 +47,7 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertFalse( false, $setting->value() );
+		$this->assertFalse( $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[id]' );
 		$this->assertEquals( 'nav_menu_trim', $control->section );
@@ -62,7 +62,7 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertFalse( false, $setting->value() );
+		$this->assertEquals( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[menu-item]' );
 		$this->assertEquals( 'nav_menu_trim', $control->section );
@@ -77,7 +77,7 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertFalse( false, $setting->value() );
+		$this->assertEquals( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[current-menu]' );
 		$this->assertEquals( 'nav_menu_trim', $control->section );
@@ -92,7 +92,7 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertFalse( false, $setting->value() );
+		$this->assertEquals( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[menu-item-has-children]' );
 		$this->assertEquals( 'nav_menu_trim', $control->section );
@@ -107,7 +107,7 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertFalse( false, $setting->value() );
+		$this->assertEquals( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[current-menu-item]' );
 		$this->assertEquals( 'nav_menu_trim', $control->section );
@@ -122,7 +122,7 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertFalse( false, $setting->value() );
+		$this->assertEquals( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[sub-menu-class]' );
 		$this->assertEquals( 'nav_menu_trim', $control->section );

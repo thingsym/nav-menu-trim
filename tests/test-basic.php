@@ -11,7 +11,7 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
-	function public_value() {
+	function public_variable() {
 		$this->assertEquals( 'nav_menu_trim_options', $this->nav_menu_trim->option_name );
 		$this->assertEquals( 'option', $this->nav_menu_trim->type );
 		$this->assertEquals( 'manage_options', $this->nav_menu_trim->capability );
