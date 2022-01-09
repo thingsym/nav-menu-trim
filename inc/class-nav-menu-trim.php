@@ -306,6 +306,17 @@ class Nav_Menu_Trim {
 			return;
 		}
 
+		$wp_customize->add_section(
+			'nav_menu_trim',
+			array(
+				'title'       => __( 'Nav Menu Trim', 'nav-menu-trim' ),
+				'description' => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
+				'panel'       => 'nav_menus',
+				'priority'    => 1000,
+				'capability'  => $this->capability,
+			)
+		);
+
 		$wp_customize->add_setting(
 			'nav_menu_trim_options[id]',
 			array(
@@ -419,18 +430,6 @@ class Nav_Menu_Trim {
 				'type'    => 'checkbox',
 			)
 		);
-
-		$wp_customize->add_section(
-			'nav_menu_trim',
-			array(
-				'title'       => __( 'Nav Menu Trim', 'nav-menu-trim' ),
-				'description' => __( 'Select the checkbox of id / class attributes in Menus you want to delete.', 'nav-menu-trim' ),
-				'panel'       => 'nav_menus',
-				'priority'    => 1000,
-				'capability'  => $this->capability,
-			)
-		);
-
 	}
 
 	/**
