@@ -7,7 +7,7 @@ on:
 
 jobs:
   phpunit:
-    name: WordPress ${{ matrix.wordpress }} * PHP v${{ matrix.php }} * ${{ matrix.os }}
+    name: WordPress ${{ matrix.wordpress }} * PHP v${{ matrix.php }} * ${{ matrix.os }} * Multisite ${{ matrix.multisite }}
     runs-on: ${{ matrix.os }}
 
     strategy:
