@@ -37,7 +37,20 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 	 * @test
 	 * @group customizer
 	 */
-	function customizer() {
+	function section() {
+		$section = $this->wp_customize->get_section( 'nav_menu_trim' );
+		$this->assertEquals( 'nav_menu_trim', $section->id );
+		$this->assertEquals( 1000, $section->priority );
+		$this->assertEquals( 'nav_menus', $section->panel );
+		$this->assertEquals( 'manage_options', $section->capability );
+		$this->assertEquals( 'Nav Menu Trim', $section->title );
+	}
+
+	/**
+	 * @test
+	 * @group customizer
+	 */
+	function control() {
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[id]' );
 		$this->assertEquals( 'nav_menu_trim_options[id]', $setting->id );
 		$this->assertEquals( 'option', $setting->type );
@@ -127,20 +140,13 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[sub-menu-class]' );
 		$this->assertEquals( 'nav_menu_trim', $control->section );
 		$this->assertEquals( 'checkbox', $control->type );
-
-		$section = $this->wp_customize->get_section( 'nav_menu_trim' );
-		$this->assertEquals( 'nav_menu_trim', $section->id );
-		$this->assertEquals( 1000, $section->priority );
-		$this->assertEquals( 'nav_menus', $section->panel );
-		$this->assertEquals( 'manage_options', $section->capability );
-		$this->assertEquals( 'Nav Menu Trim', $section->title );
 	}
 
 	/**
 	 * @test
 	 * @group customizer
 	 */
-	function save_case() {
+	function save_case_normal() {
 		$this->wp_customize->set_post_value( 'nav_menu_trim_options[id]', true );
 		// $setting->preview();
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[id]' );
@@ -149,7 +155,13 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 
 		$option = $this->nav_menu_trim->get_options( 'id' );
 		$this->assertTrue( $option );
+	}
 
+	/**
+	 * @test
+	 * @group customizer
+	 */
+	function save_case_sanitize() {
 		$this->wp_customize->set_post_value( 'nav_menu_trim_options[id]', false );
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[id]' );
 		$setting->save();
