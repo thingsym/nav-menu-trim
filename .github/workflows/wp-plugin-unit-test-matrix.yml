@@ -1,22 +1,14 @@
-name: WordPress Plugin Unit test
+name: WordPress Plugin Unit test matrix
 
 on:
   push:
     branches:
-      - '**'
-      - '!svn-trunk'
-      - '!test-matrix'
-    tags-ignore:
-      - '**'
-  pull_request:
-    branches:
-      - '**'
+      - 'test-matrix'
 
 jobs:
   phpunit:
     name: WordPress ${{ matrix.wordpress }} * PHP v${{ matrix.php }} * ${{ matrix.os }} * Multisite ${{ matrix.multisite }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
 
     strategy:
       fail-fast: false
@@ -24,8 +16,33 @@ jobs:
       matrix:
         os: [ ubuntu-20.04 ]
         php: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4' ]
-        wordpress: [ latest, nightly ]
+        wordpress: [ '4.9', '5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', latest, nightly ]
         multisite: [ 0 ]
+        include:
+          # Trying to access array offset on value of type bool on PHP 7.4
+          - allow_failures: "true"
+            php: '7.4'
+            wordpress: '5.2'
+
+          # Function get_magic_quotes_gpc() is deprecated
+          - allow_failures: "true"
+            php: '7.4'
+            wordpress: '5.0'
+
+          - allow_failures: "true"
+            php: '7.4'
+            wordpress: '5.1'
+
+          # compact(): Undefined variable: context
+          # WordPress 4.9.x does not support on PHP 7.3.0 later
+          # https://core.trac.wordpress.org/ticket/46449
+          - allow_failures: "true"
+            php: '7.4'
+            wordpress: '4.9'
+
+          - allow_failures: "true"
+            php: '7.3'
+            wordpress: '4.9'
 
     env:
       PHP_VERSION: ${{ matrix.php }}
@@ -40,10 +57,6 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl, php-mysql
-
-      - name: apt --fix-broken install for PHP 7.0
-        run: sudo apt --fix-broken install
-        if: ${{ matrix.php == '7.0' }}
 
       - name: Install mbstring library for PHP 7.0
         # require ext-mbstring * -> it is missing from your system. Install or enable PHP's mbstring extension.
@@ -90,3 +103,4 @@ jobs:
 
       - name: Run PHPUnit - WordPress ${{ matrix.wordpress }} * Multisite ${{ matrix.multisite }}
         run: phpunit
+        continue-on-error: ${{ matrix.allow_failures == 'true' }}

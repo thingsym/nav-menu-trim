@@ -3,10 +3,10 @@ Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
 Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Tested up to: 5.8.0
-Requires at least: 3.8
-Requires PHP: 5.4
+Requires at least: 4.9
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,16 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.2.2 =
+* fix wp-plugin-unit-test.yml
+* add Upgrade Notice
+* change requires at least to wordpress 4.9
+* change requires to PHP 5.6
+* bump up yoast/phpunit-polyfills version
+* update wp-plugin-unit-test.yml
+* change os to ubuntu-20.04 for ci
+* add wp-plugin-unit-test-matrix.yml
 
 = 1.2.1 =
 * add test case for customizer
@@ -113,6 +123,10 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 * initial release
 
 == Upgrade Notice ==
+
+= 1.2.2 =
+* Requires at least version 4.9 of the WordPress
+* Requires PHP version 5.6
 
 = 1.1.1 =
 * Requires at least version 3.8 of the WordPress

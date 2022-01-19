@@ -49,6 +49,15 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.2.2
+	* fix wp-plugin-unit-test.yml
+	* add Upgrade Notice
+	* change requires at least to wordpress 4.9
+	* change requires to PHP 5.6
+	* bump up yoast/phpunit-polyfills version
+	* update wp-plugin-unit-test.yml
+	* change os to ubuntu-20.04 for ci
+	* add wp-plugin-unit-test-matrix.yml
 * Version 1.2.1
 	* add test case for customizer
 	* update composer dependencies
@@ -108,7 +117,10 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Upgrade Notice
 
-* 1.1.1
+* Version 1.2.2
+	* Requires at least version 4.9 of the WordPress
+	* Requires PHP version 5.6
+* Version 1.1.1
 	* Requires at least version 3.8 of the WordPress
 
 ## License

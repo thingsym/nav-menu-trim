@@ -86,7 +86,15 @@ class Test_Nav_Menu_Trim_Options extends WP_UnitTestCase {
 	}
 
 	public function _filter_options( $options ) {
-		$this->assertTrue( is_array( $options ) );
+		$expected = array(
+			'id'                     => true,
+			'menu-item'              => true,
+			'current-menu'           => true,
+			'menu-item-has-children' => true,
+			'current-menu-item'      => true,
+			'sub-menu-class'         => true,
+		);
+		$this->assertEquals( $expected, $options );
 
 		$options['id'] = false;
 		return $options;
