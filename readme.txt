@@ -3,7 +3,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
 Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 Tested up to: 5.9.0
 Requires at least: 4.9
 Requires PHP: 5.6
@@ -48,6 +48,13 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.2.3 =
+* add composer script
+* remove makepot:php composer script
+* change makepot from php script to wp cli
+* change plugin initialization to plugins_loaded hook
+* replace assert from assertEquals to assertSame
 
 = 1.2.2 =
 * fix wp-plugin-unit-test.yml
