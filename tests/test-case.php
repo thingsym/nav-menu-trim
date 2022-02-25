@@ -24,7 +24,7 @@ class Test_Nav_Menu_Trim_Case extends WP_UnitTestCase {
 		update_option( 'nav_menu_trim_options', $options );
 
 		$id = $this->nav_menu_trim->trim_item_id( 'menu-item-1697', '', '', '' );
-		$this->assertEquals( $id, '' );
+		$this->assertSame( $id, '' );
 
 		$post = $this->factory->post->create();
 		$wp_post = get_post( $post );
@@ -54,7 +54,7 @@ class Test_Nav_Menu_Trim_Case extends WP_UnitTestCase {
 		update_option( 'nav_menu_trim_options', $options );
 
 		$id = $this->nav_menu_trim->trim_item_id( 'menu-item-1697', '', '', '' );
-		$this->assertEquals( $id, 'menu-item-1697' );
+		$this->assertSame( $id, 'menu-item-1697' );
 
 		$post = $this->factory->post->create();
 		$wp_post = get_post( $post );
@@ -88,7 +88,7 @@ class Test_Nav_Menu_Trim_Case extends WP_UnitTestCase {
 		$hook_classes = $this->_get_classes( $wp_post );
 
 		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
-		$this->assertEquals( $classes, array() );
+		$this->assertSame( $classes, array() );
 	}
 
 	/**
@@ -113,7 +113,7 @@ class Test_Nav_Menu_Trim_Case extends WP_UnitTestCase {
 
 		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
 		$this->assertTrue( in_array( 'current-menu-item', $classes ) );
-		$this->assertEquals( 1, count( $classes ) );
+		$this->assertSame( 1, count( $classes ) );
 	}
 
 	/**
@@ -139,7 +139,7 @@ class Test_Nav_Menu_Trim_Case extends WP_UnitTestCase {
 		$classes = $this->nav_menu_trim->trim_menu_css_class( $hook_classes, $wp_post, '', '' );
 		$this->assertTrue( in_array( 'current-menu-item', $classes ) );
 		$this->assertTrue( in_array( 'menu-item-has-children', $classes ) );
-		$this->assertEquals( 2, count( $classes ) );
+		$this->assertSame( 2, count( $classes ) );
 	}
 
 	public function _get_classes( $wp_post ) {

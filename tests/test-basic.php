@@ -12,9 +12,9 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function public_variable() {
-		$this->assertEquals( 'nav_menu_trim_options', $this->nav_menu_trim->option_name );
-		$this->assertEquals( 'option', $this->nav_menu_trim->type );
-		$this->assertEquals( 'manage_options', $this->nav_menu_trim->capability );
+		$this->assertSame( 'nav_menu_trim_options', $this->nav_menu_trim->option_name );
+		$this->assertSame( 'option', $this->nav_menu_trim->type );
+		$this->assertSame( 'manage_options', $this->nav_menu_trim->capability );
 
 		$expected = array(
 			'id'                     => false,
@@ -24,7 +24,7 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 			'current-menu-item'      => false,
 			'sub-menu-class'         => false,
 		);
-		$this->assertEquals( $expected, $this->nav_menu_trim->default_options );
+		$this->assertSame( $expected, $this->nav_menu_trim->default_options );
 	}
 
 	/**
@@ -32,8 +32,8 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function constructor() {
-		$this->assertEquals( 10, has_filter( 'init', array( $this->nav_menu_trim, 'load_textdomain' ) ) );
-		$this->assertEquals( 10, has_filter( 'init', array( $this->nav_menu_trim, 'init' ) ) );
+		$this->assertSame( 10, has_filter( 'init', array( $this->nav_menu_trim, 'load_textdomain' ) ) );
+		$this->assertSame( 10, has_filter( 'init', array( $this->nav_menu_trim, 'init' ) ) );
 	}
 
 	/**
@@ -43,15 +43,15 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	function init() {
 		$this->nav_menu_trim->init();
 
-		$this->assertEquals( 10, has_filter( 'nav_menu_css_class', array( $this->nav_menu_trim, 'trim_menu_css_class' ) ) );
-		$this->assertEquals( 10, has_filter( 'nav_menu_item_id', array( $this->nav_menu_trim, 'trim_item_id' ) ) );
-		$this->assertEquals( 10, has_filter( 'nav_menu_submenu_css_class', array( $this->nav_menu_trim, 'trim_submenu_css_class' ) ) );
+		$this->assertSame( 10, has_filter( 'nav_menu_css_class', array( $this->nav_menu_trim, 'trim_menu_css_class' ) ) );
+		$this->assertSame( 10, has_filter( 'nav_menu_item_id', array( $this->nav_menu_trim, 'trim_item_id' ) ) );
+		$this->assertSame( 10, has_filter( 'nav_menu_submenu_css_class', array( $this->nav_menu_trim, 'trim_submenu_css_class' ) ) );
 
-		$this->assertEquals( 10, has_action( 'customize_register', array( $this->nav_menu_trim, 'customizer' ) ) );
-		$this->assertEquals( 10, has_action( 'customize_controls_print_styles', array( $this->nav_menu_trim, 'customizer_print_styles' ) ) );
+		$this->assertSame( 10, has_action( 'customize_register', array( $this->nav_menu_trim, 'customizer' ) ) );
+		$this->assertSame( 10, has_action( 'customize_controls_print_styles', array( $this->nav_menu_trim, 'customizer_print_styles' ) ) );
 
-		$this->assertEquals( 10, has_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM__ ), array( $this->nav_menu_trim, 'plugin_action_links' ) ) );
-		$this->assertEquals( 10, has_filter( 'plugin_row_meta', array( $this->nav_menu_trim, 'plugin_metadata_links' ) ) );
+		$this->assertSame( 10, has_filter( 'plugin_action_links_' . plugin_basename( __NAV_MENU_TRIM__ ), array( $this->nav_menu_trim, 'plugin_action_links' ) ) );
+		$this->assertSame( 10, has_filter( 'plugin_row_meta', array( $this->nav_menu_trim, 'plugin_metadata_links' ) ) );
 	}
 
 	/**

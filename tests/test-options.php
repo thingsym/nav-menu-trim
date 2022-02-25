@@ -22,7 +22,7 @@ class Test_Nav_Menu_Trim_Options extends WP_UnitTestCase {
 			'sub-menu-class'         => false,
 		);
 
-		$this->assertEquals( $expected, $options );
+		$this->assertSame( $expected, $options );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Test_Nav_Menu_Trim_Options extends WP_UnitTestCase {
 		$this->assertTrue( $option );
 
 		$option = $this->nav_menu_trim->get_options( 'test' );
-		$this->assertEquals( $option, null );
+		$this->assertSame( $option, null );
 
 	}
 
@@ -94,7 +94,7 @@ class Test_Nav_Menu_Trim_Options extends WP_UnitTestCase {
 			'current-menu-item'      => true,
 			'sub-menu-class'         => true,
 		);
-		$this->assertEquals( $expected, $options );
+		$this->assertSame( $expected, $options );
 
 		$options['id'] = false;
 		return $options;
@@ -102,7 +102,7 @@ class Test_Nav_Menu_Trim_Options extends WP_UnitTestCase {
 
 	public function _filter_option( $option, $name ) {
 		$this->assertTrue( $option );
-		$this->assertEquals( $name, 'menu-item' );
+		$this->assertSame( $name, 'menu-item' );
 
 		$option = false;
 		return $option;
