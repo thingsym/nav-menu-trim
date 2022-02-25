@@ -32,8 +32,8 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function constructor() {
-		$this->assertSame( 10, has_filter( 'init', array( $this->nav_menu_trim, 'load_textdomain' ) ) );
-		$this->assertSame( 10, has_filter( 'init', array( $this->nav_menu_trim, 'init' ) ) );
+		$this->assertSame( 10, has_filter( 'plugins_loaded', array( $this->nav_menu_trim, 'load_textdomain' ) ) );
+		$this->assertSame( 10, has_filter( 'plugins_loaded', array( $this->nav_menu_trim, 'init' ) ) );
 	}
 
 	/**
