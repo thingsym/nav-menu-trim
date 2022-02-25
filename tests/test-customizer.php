@@ -39,11 +39,11 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 	 */
 	function section() {
 		$section = $this->wp_customize->get_section( 'nav_menu_trim' );
-		$this->assertEquals( 'nav_menu_trim', $section->id );
-		$this->assertEquals( 1000, $section->priority );
-		$this->assertEquals( 'nav_menus', $section->panel );
-		$this->assertEquals( 'manage_options', $section->capability );
-		$this->assertEquals( 'Nav Menu Trim', $section->title );
+		$this->assertSame( 'nav_menu_trim', $section->id );
+		$this->assertSame( 1000, $section->priority );
+		$this->assertSame( 'nav_menus', $section->panel );
+		$this->assertSame( 'manage_options', $section->capability );
+		$this->assertSame( 'Nav Menu Trim', $section->title );
 	}
 
 	/**
@@ -52,94 +52,94 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 	 */
 	function control() {
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[id]' );
-		$this->assertEquals( 'nav_menu_trim_options[id]', $setting->id );
-		$this->assertEquals( 'option', $setting->type );
-		$this->assertEquals( 'manage_options', $setting->capability );
-		$this->assertEquals( false, $setting->default );
-		$this->assertEquals( 'refresh', $setting->transport );
+		$this->assertSame( 'nav_menu_trim_options[id]', $setting->id );
+		$this->assertSame( 'option', $setting->type );
+		$this->assertSame( 'manage_options', $setting->capability );
+		$this->assertSame( false, $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
 		$this->assertFalse( $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[id]' );
-		$this->assertEquals( 'nav_menu_trim', $control->section );
-		$this->assertEquals( 'checkbox', $control->type );
+		$this->assertSame( 'nav_menu_trim', $control->section );
+		$this->assertSame( 'checkbox', $control->type );
 
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[menu-item]' );
-		$this->assertEquals( 'nav_menu_trim_options[menu-item]', $setting->id );
-		$this->assertEquals( 'option', $setting->type );
-		$this->assertEquals( 'manage_options', $setting->capability );
-		$this->assertEquals( false, $setting->default );
-		$this->assertEquals( 'refresh', $setting->transport );
+		$this->assertSame( 'nav_menu_trim_options[menu-item]', $setting->id );
+		$this->assertSame( 'option', $setting->type );
+		$this->assertSame( 'manage_options', $setting->capability );
+		$this->assertSame( false, $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertEquals( false, $setting->value() );
+		$this->assertSame( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[menu-item]' );
-		$this->assertEquals( 'nav_menu_trim', $control->section );
-		$this->assertEquals( 'checkbox', $control->type );
+		$this->assertSame( 'nav_menu_trim', $control->section );
+		$this->assertSame( 'checkbox', $control->type );
 
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[current-menu]' );
-		$this->assertEquals( 'nav_menu_trim_options[current-menu]', $setting->id );
-		$this->assertEquals( 'option', $setting->type );
-		$this->assertEquals( 'manage_options', $setting->capability );
-		$this->assertEquals( false, $setting->default );
-		$this->assertEquals( 'refresh', $setting->transport );
+		$this->assertSame( 'nav_menu_trim_options[current-menu]', $setting->id );
+		$this->assertSame( 'option', $setting->type );
+		$this->assertSame( 'manage_options', $setting->capability );
+		$this->assertSame( false, $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertEquals( false, $setting->value() );
+		$this->assertSame( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[current-menu]' );
-		$this->assertEquals( 'nav_menu_trim', $control->section );
-		$this->assertEquals( 'checkbox', $control->type );
+		$this->assertSame( 'nav_menu_trim', $control->section );
+		$this->assertSame( 'checkbox', $control->type );
 
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[menu-item-has-children]' );
-		$this->assertEquals( 'nav_menu_trim_options[menu-item-has-children]', $setting->id );
-		$this->assertEquals( 'option', $setting->type );
-		$this->assertEquals( 'manage_options', $setting->capability );
-		$this->assertEquals( false, $setting->default );
-		$this->assertEquals( 'refresh', $setting->transport );
+		$this->assertSame( 'nav_menu_trim_options[menu-item-has-children]', $setting->id );
+		$this->assertSame( 'option', $setting->type );
+		$this->assertSame( 'manage_options', $setting->capability );
+		$this->assertSame( false, $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertEquals( false, $setting->value() );
+		$this->assertSame( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[menu-item-has-children]' );
-		$this->assertEquals( 'nav_menu_trim', $control->section );
-		$this->assertEquals( 'checkbox', $control->type );
+		$this->assertSame( 'nav_menu_trim', $control->section );
+		$this->assertSame( 'checkbox', $control->type );
 
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[current-menu-item]' );
-		$this->assertEquals( 'nav_menu_trim_options[current-menu-item]', $setting->id );
-		$this->assertEquals( 'option', $setting->type );
-		$this->assertEquals( 'manage_options', $setting->capability );
-		$this->assertEquals( false, $setting->default );
-		$this->assertEquals( 'refresh', $setting->transport );
+		$this->assertSame( 'nav_menu_trim_options[current-menu-item]', $setting->id );
+		$this->assertSame( 'option', $setting->type );
+		$this->assertSame( 'manage_options', $setting->capability );
+		$this->assertSame( false, $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertEquals( false, $setting->value() );
+		$this->assertSame( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[current-menu-item]' );
-		$this->assertEquals( 'nav_menu_trim', $control->section );
-		$this->assertEquals( 'checkbox', $control->type );
+		$this->assertSame( 'nav_menu_trim', $control->section );
+		$this->assertSame( 'checkbox', $control->type );
 
 		$setting = $this->wp_customize->get_setting( 'nav_menu_trim_options[sub-menu-class]' );
-		$this->assertEquals( 'nav_menu_trim_options[sub-menu-class]', $setting->id );
-		$this->assertEquals( 'option', $setting->type );
-		$this->assertEquals( 'manage_options', $setting->capability );
-		$this->assertEquals( false, $setting->default );
-		$this->assertEquals( 'refresh', $setting->transport );
+		$this->assertSame( 'nav_menu_trim_options[sub-menu-class]', $setting->id );
+		$this->assertSame( 'option', $setting->type );
+		$this->assertSame( 'manage_options', $setting->capability );
+		$this->assertSame( false, $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
 		$this->assertTrue( in_array( 'sanitize_boolean', $setting->sanitize_callback ) );
 		$this->assertSame( 10, has_filter( "customize_sanitize_{$setting->id}", $setting->sanitize_callback ) );
 
-		$this->assertEquals( false, $setting->value() );
+		$this->assertSame( false, $setting->value() );
 
 		$control = $this->wp_customize->get_control( 'nav_menu_trim_options[sub-menu-class]' );
-		$this->assertEquals( 'nav_menu_trim', $control->section );
-		$this->assertEquals( 'checkbox', $control->type );
+		$this->assertSame( 'nav_menu_trim', $control->section );
+		$this->assertSame( 'checkbox', $control->type );
 	}
 
 	/**

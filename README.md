@@ -49,6 +49,12 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+* Version 1.2.3
+	* add composer script
+	* remove makepot:php composer script
+	* change makepot from php script to wp cli
+	* change plugin initialization to plugins_loaded hook
+	* replace assert from assertEquals to assertSame
 * Version 1.2.2
 	* fix wp-plugin-unit-test.yml
 	* add Upgrade Notice
