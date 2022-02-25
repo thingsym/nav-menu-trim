@@ -30,6 +30,7 @@
       "@phpstan"
     ],
     "makepot:wpcli": "wp i18n make-pot ./ ./languages/nav-menu-trim.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "makemo:ja": "wp i18n make-mo languages/nav-menu-trim-ja.po languages/",
     "msgfmt:ja": "msgfmt languages/nav-menu-trim-ja.po -o languages/nav-menu-trim-ja.mo"
   }
 }
