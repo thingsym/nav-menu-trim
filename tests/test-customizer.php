@@ -9,7 +9,7 @@ class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
 	 */
 	public $wp_customize;
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 		$this->nav_menu_trim = new Nav_Menu_Trim();
 

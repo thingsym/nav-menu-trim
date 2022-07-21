@@ -2,7 +2,7 @@
 
 class Test_Nav_Menu_Trim_Options extends WP_UnitTestCase {
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 		$this->nav_menu_trim = new Nav_Menu_Trim();
 	}
