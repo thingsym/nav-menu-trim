@@ -10,24 +10,58 @@ Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This WordPress plugin trim html id/class attributes of Nav Menu.
+Nav Menu Trim plugin trim html id/class attributes of Nav Menu.
 
 == Description ==
 
-This WordPress plugin trim html id/class attributes of Nav Menu.
+Nav Menu Trim plugin trim html id/class attributes of Nav Menu.
+
+= Support =
+
+If you have any trouble, you can use the forums or report bugs.
+
+* Forum: [https://wordpress.org/support/plugin/nav-menu-trim/](https://wordpress.org/support/plugin/nav-menu-trim/)
+* Issues: [https://github.com/thingsym/nav-menu-trim/issues](https://github.com/thingsym/nav-menu-trim/issues)
+
+= Contribution =
+
+Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
+
+Translating a plugin takes a lot of time, effort, and patience. I really appreciate the hard work from these contributors.
+
+If you have created or updated your own language pack, you can send gettext PO and MO files to author. I can bundle it into plugin.
+
+* [VCS - GitHub](https://github.com/thingsym/nav-menu-trim)
+* [Homepage - WordPress Plugin](https://wordpress.org/plugins/nav-menu-trim/)
+* [Translate Nav Menu Trim into your language.](https://translate.wordpress.org/projects/wp-plugins/nav-menu-trim)
+
+You can also contribute by answering issues on the forums.
+
+* Forum: [https://wordpress.org/support/plugin/nav-menu-trim/](https://wordpress.org/support/plugin/nav-menu-trim/)
+* Issues: [https://github.com/thingsym/nav-menu-trim/issues](https://github.com/thingsym/nav-menu-trim/issues)
+
+= Patches and Bug Fixes =
+
+Forking on Github is another good way. You can send a pull request.
+
+1. Fork [Nav Menu Trim](https://github.com/thingsym/nav-menu-trim) from GitHub repository
+2. Create a feature branch: git checkout -b my-new-feature
+3. Commit your changes: git commit -am 'Add some feature'
+4. Push to the branch: git push origin my-new-feature
+5. Create new Pull Request
+
+= Contribute guidlines =
+
+If you would like to contribute, here are some notes and guidlines.
+
+* All development happens on the **develop** branch, so it is always the most up-to-date
+* The **master** branch only contains tagged releases
+* If you are going to be submitting a pull request, please submit your pull request to the **develop** branch
+* See about [forking](https://help.github.com/articles/fork-a-repo/) and [pull requests](https://help.github.com/articles/using-pull-requests/)
 
 = Test Matrix =
 
 For operation compatibility between PHP version and WordPress version, see below [Github Actions](https://github.com/thingsym/nav-menu-trim/actions).
-
-= Contributing =
-
-= Patches and Bug Fixes =
-
-Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
-
-* [nav-menu-trim - GitHub](https://github.com/thingsym/nav-menu-trim)
-* [Nav Menu Trim - WordPress Plugin](https://wordpress.org/plugins/nav-menu-trim/)
 
 == Installation ==
 
