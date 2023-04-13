@@ -76,6 +76,47 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
+	public function load_textdomain() {
+		$loaded = $this->nav_menu_trim->load_textdomain();
+		$this->assertFalse( $loaded );
+
+		unload_textdomain( 'nav-menu-trim' );
+
+		add_filter( 'locale', [ $this, '_change_locale' ] );
+		add_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ], 10, 2 );
+
+		$loaded = $this->nav_menu_trim->load_textdomain();
+		$this->assertTrue( $loaded );
+
+		remove_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ] );
+		remove_filter( 'locale', [ $this, '_change_locale' ] );
+
+		unload_textdomain( 'nav-menu-trim' );
+	}
+
+	/**
+	 * hook for load_textdomain
+	 */
+	function _change_locale( $locale ) {
+		return 'ja';
+	}
+
+	function _change_textdomain_mofile( $mofile, $domain ) {
+		if ( $domain === 'nav-menu-trim' ) {
+			$locale = determine_locale();
+			$mofile = plugin_dir_path( __NAV_MENU_TRIM__ ) . 'languages/nav-menu-trim-' . $locale . '.mo';
+
+			$this->assertSame( $locale, get_locale() );
+			$this->assertFileExists( $mofile );
+		}
+
+		return $mofile;
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
 	public function plugin_metadata_links() {
 		$links = $this->nav_menu_trim->plugin_metadata_links( array(), plugin_basename( __NAV_MENU_TRIM__ ) );
 		$this->assertContains( '<a href="https://github.com/sponsors/thingsym">Become a sponsor</a>', $links );

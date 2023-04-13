@@ -478,15 +478,15 @@ EOM;
 	 *
 	 * @access public
 	 *
-	 * @return void
+	 * @return boolean
 	 *
 	 * @since 1.0.0
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain(
+		return load_plugin_textdomain(
 			'nav-menu-trim',
 			false,
-			dirname( plugin_basename( __NAV_MENU_TRIM__ ) ) . '/languages'
+			plugin_dir_path( __NAV_MENU_TRIM__ ) . 'languages'
 		);
 	}
 
