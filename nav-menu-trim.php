@@ -3,7 +3,7 @@
  * Plugin Name: Nav Menu Trim
  * Plugin URI:  https://github.com/thingsym/nav-menu-trim
  * Description: This WordPress plugin trim html id/class attributes of Nav Menu.
- * Version:     1.2.3
+ * Version:     1.2.4
  * Author:      thingsym
  * Author URI:  https://management.thingslabo.com/
  * License:     GPLv2 or later
