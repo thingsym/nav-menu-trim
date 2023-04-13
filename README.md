@@ -79,6 +79,14 @@ For operation compatibility between PHP version and WordPress version, see below
 
 ## Changelog
 
+* Version 1.2.4
+	* tested up to 6.2.0
+	* fix composer scripts
+	* update github actions
+	* fix load_textdomain method for testability
+	* add msgmerge to composer scripts
+	* add support section and enhance contribution section to README
+	* fix license
 * Version 1.2.3
 	* add composer script
 	* remove makepot:php composer script

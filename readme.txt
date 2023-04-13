@@ -3,7 +3,7 @@ Contributors: thingsym
 Link: https://github.com/thingsym/nav-menu-trim
 Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 Tested up to: 6.2.0
 Requires at least: 4.9
 Requires PHP: 5.6
@@ -82,6 +82,15 @@ For operation compatibility between PHP version and WordPress version, see below
 2. Nav Menu Trim options
 
 == Changelog ==
+
+= 1.2.4 =
+* tested up to 6.2.0
+* fix composer scripts
+* update github actions
+* fix load_textdomain method for testability
+* add msgmerge to composer scripts
+* add support section and enhance contribution section to README
+* fix license
 
 = 1.2.3 =
 * add composer script
