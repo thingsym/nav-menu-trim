@@ -4,7 +4,7 @@ Link: https://github.com/thingsym/nav-menu-trim
 Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
 Stable tag: 1.2.3
-Tested up to: 6.0.0
+Tested up to: 6.2.0
 Requires at least: 4.9
 Requires PHP: 5.6
 License: GPLv2 or later
