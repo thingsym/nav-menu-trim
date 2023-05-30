@@ -1,4 +1,4 @@
-name: WordPress Plugin Unit test
+name: WordPress Plugin Unit test / legacy
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
 
       matrix:
         os: [ ubuntu-20.04 ]
-        php: [ '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
+        php: [ '5.6', '7.0' ]
         wordpress: [ latest, nightly ]
         multisite: [ 0 ]
 
@@ -61,9 +61,7 @@ jobs:
       - name: Install PHPUnit
         run: |
           # for PHP Compatibility - https://phpunit.de/supported-versions.html
-          if [[ ${PHP_VERSION:0:1} == "8" ]] ; then
-            composer global require "phpunit/phpunit=8.*"
-          elif [[ $PHP_VERSION == "7.0" ]] ; then
+          if [[ $PHP_VERSION == "7.0" ]] ; then
             composer global require "phpunit/phpunit=5.7.*|6.*"
           # for WP_VERSION < 4.6 due to PHP Fatal error: Class 'PHPUnit_Framework_TestCase' not found
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 4.6* ]] ; then
@@ -82,4 +80,4 @@ jobs:
         run: bash bin/install-wp-tests.sh wordpress_test root root 0.0.0.0:3306 $WP_VERSION
 
       - name: Run PHPUnit - WordPress ${{ matrix.wordpress }} * Multisite ${{ matrix.multisite }}
-        run: phpunit
+        run: phpunit --configuration phpunit-legacy.xml
