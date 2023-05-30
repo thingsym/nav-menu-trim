@@ -15,8 +15,8 @@ jobs:
 
       matrix:
         os: [ ubuntu-20.04 ]
-        php: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4' ]
-        wordpress: [ '4.9', '5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', latest, nightly ]
+        php: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
+        wordpress: [ '4.9', '5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9', '6.0', '6.1', '6.2', latest, nightly ]
         multisite: [ 0 ]
         include:
           # Trying to access array offset on value of type bool on PHP 7.4
@@ -58,6 +58,10 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl, php-mysql
 
+      - name: apt --fix-broken install for PHP 7.0
+        run: sudo apt --fix-broken install
+        if: ${{ matrix.php == '7.0' }}
+
       - name: Install mbstring library for PHP 7.0
         # require ext-mbstring * -> it is missing from your system. Install or enable PHP's mbstring extension.
         run: sudo apt-get install php7.0-mbstring
@@ -83,7 +87,9 @@ jobs:
       - name: Install PHPUnit
         run: |
           # for PHP Compatibility - https://phpunit.de/supported-versions.html
-          if [[ $PHP_VERSION == "7.0" ]] ; then
+          if [[ ${PHP_VERSION:0:1} == "8" ]] ; then
+            composer global require "phpunit/phpunit=8.*"
+          elif [[ $PHP_VERSION == "7.0" ]] ; then
             composer global require "phpunit/phpunit=5.7.*|6.*"
           # for WP_VERSION < 4.6 due to PHP Fatal error: Class 'PHPUnit_Framework_TestCase' not found
           elif [[ ${PHP_VERSION:0:1} == "7" ]] && [[ "$WP_VERSION" < 4.6* ]] ; then
@@ -99,8 +105,13 @@ jobs:
         run: composer global require "yoast/phpunit-polyfills=1.0.3"
 
       - name: Install wp tests
-        run: bash bin/install-wp-tests.sh wordpress_test root root localhost $WP_VERSION
+        run: bash bin/install-wp-tests.sh wordpress_test root root 0.0.0.0:3306 $WP_VERSION
 
       - name: Run PHPUnit - WordPress ${{ matrix.wordpress }} * Multisite ${{ matrix.multisite }}
-        run: phpunit
+        run: |
+          if [[ $PHP_VERSION == "5.6" ]] || [[ $PHP_VERSION == "7.0" ]] ; then
+            phpunit --configuration phpunit-legacy.xml
+          else
+            phpunit
+          fi
         continue-on-error: ${{ matrix.allow_failures == 'true' }}
