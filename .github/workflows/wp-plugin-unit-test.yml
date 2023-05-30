@@ -23,7 +23,7 @@ jobs:
 
       matrix:
         os: [ ubuntu-20.04 ]
-        php: [ '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
+        php: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
         wordpress: [ latest, nightly ]
         multisite: [ 0 ]
 
@@ -82,4 +82,9 @@ jobs:
         run: bash bin/install-wp-tests.sh wordpress_test root root 0.0.0.0:3306 $WP_VERSION
 
       - name: Run PHPUnit - WordPress ${{ matrix.wordpress }} * Multisite ${{ matrix.multisite }}
-        run: phpunit
+        run: |
+          if [[ $PHP_VERSION == "5.6" ]] || [[ $PHP_VERSION == "7.0" ]] ; then
+            phpunit --configuration phpunit-legacy.xml
+          else
+            phpunit
+          fi
