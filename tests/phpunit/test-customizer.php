@@ -1,6 +1,7 @@
 <?php
 
 class Test_Nav_Menu_Trim_Customizer extends WP_UnitTestCase {
+	public $nav_menu_trim;
 
 	/**
 	 * Instance of WP_Customize_Manager which is reset for each test.

@@ -1,6 +1,7 @@
 <?php
 
 class Test_Nav_Menu_Trim_Case extends WP_UnitTestCase {
+	public $nav_menu_trim;
 
 	public function setUp(): void {
 		parent::setUp();
