@@ -34,6 +34,7 @@ jobs:
             wordpress: '5.1'
 
         exclude:
+          # PHP 8.0+ is not compatible with PHPUnit 7.x. on WordPress versions prior to 5.8 and should not be tested.
           - php: '8.0'
             wordpress: '5.8'
           - php: '8.0'
