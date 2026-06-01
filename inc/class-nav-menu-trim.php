@@ -457,7 +457,7 @@ class Nav_Menu_Trim {
 	 * @since 1.0.0
 	 */
 	public function customizer_print_styles() {
-		$css = <<< EOM
+		$css = <<<'EOM'
 <style>
 #customize-theme-controls #accordion-section-nav_menu_trim {
 	margin-top: 3px;
@@ -507,7 +507,7 @@ EOM;
 	 * @since 1.2.0
 	 */
 	public function plugin_metadata_links( $links, $file ) {
-		if ( $file == plugin_basename( __NAV_MENU_TRIM__ ) ) {
+		if ( $file === plugin_basename( __NAV_MENU_TRIM__ ) ) {
 			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'nav-menu-trim' ) . '</a>';
 		}
 
