@@ -486,7 +486,7 @@ EOM;
 		return load_plugin_textdomain(
 			'nav-menu-trim',
 			false,
-			plugin_dir_path( __NAV_MENU_TRIM__ ) . 'languages'
+			'nav-menu-trim/languages'
 		);
 	}
 
