@@ -68,6 +68,8 @@
     <exclude name="Generic.Commenting.DocComment" />
 
     <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+
+    <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed" />
   </rule>
 
   <rule ref="PHPCompatibilityWP">
