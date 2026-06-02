@@ -4,9 +4,9 @@ Link: https://github.com/thingsym/nav-menu-trim
 Donate link: https://github.com/sponsors/thingsym
 Tags: nav, menu
 Stable tag: 1.2.4
-Requires at least: 4.9
-Tested up to: 6.6.1
-Requires PHP: 5.6
+Tested up to: 7.0
+Requires at least: 5.9
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -173,6 +173,10 @@ For operation compatibility between PHP version and WordPress version, see below
 * initial release
 
 == Upgrade Notice ==
+
+= 1.2.5 =
+* Requires at least version 5.9 of the WordPress
+* Requires PHP version 7.4
 
 = 1.2.2 =
 * Requires at least version 4.9 of the WordPress

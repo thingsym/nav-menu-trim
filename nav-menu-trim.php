@@ -24,4 +24,4 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/class-nav-menu-trim.php';
 
 if ( class_exists( 'Nav_Menu_Trim' ) ) {
 	new Nav_Menu_Trim();
-};
+}
