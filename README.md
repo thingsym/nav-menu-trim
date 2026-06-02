@@ -79,93 +79,107 @@ For operation compatibility between PHP version and WordPress version, see below
 
 ## Changelog
 
+* Version 1.2.5
+  * tested up to 7.0
+  * change requires at least to wordpress 5.9
+  * change requires to PHP 7.4
+  * fix test case
+  * fix plugin_textdomain rel path
+  * add phpcs job
+  * update github workflows
+  * update phpunit v9 and wpcs v3
+  * update composer dependencies
+  * update wp-tests script
 * Version 1.2.4
-	* tested up to 6.2.0
-	* fix composer scripts
-	* update github actions
-	* fix load_textdomain method for testability
-	* add msgmerge to composer scripts
-	* add support section and enhance contribution section to README
-	* fix license
+  * tested up to 6.2.0
+  * fix composer scripts
+  * update github actions
+  * fix load_textdomain method for testability
+  * add msgmerge to composer scripts
+  * add support section and enhance contribution section to README
+  * fix license
 * Version 1.2.3
-	* add composer script
-	* remove makepot:php composer script
-	* change makepot from php script to wp cli
-	* change plugin initialization to plugins_loaded hook
-	* replace assert from assertEquals to assertSame
+  * add composer script
+  * remove makepot:php composer script
+  * change makepot from php script to wp cli
+  * change plugin initialization to plugins_loaded hook
+  * replace assert from assertEquals to assertSame
 * Version 1.2.2
-	* fix wp-plugin-unit-test.yml
-	* add Upgrade Notice
-	* change requires at least to wordpress 4.9
-	* change requires to PHP 5.6
-	* bump up yoast/phpunit-polyfills version
-	* update wp-plugin-unit-test.yml
-	* change os to ubuntu-20.04 for ci
-	* add wp-plugin-unit-test-matrix.yml
+  * fix wp-plugin-unit-test.yml
+  * add Upgrade Notice
+  * change requires at least to wordpress 4.9
+  * change requires to PHP 5.6
+  * bump up yoast/phpunit-polyfills version
+  * update wp-plugin-unit-test.yml
+  * change os to ubuntu-20.04 for ci
+  * add wp-plugin-unit-test-matrix.yml
 * Version 1.2.1
-	* add test case for customizer
-	* update composer dependencies
-	* change from protected variable to public variable for unit test
-	* add timeout-minutes to workflows
-	* add phpunit-polyfills
-	* tested up to 5.8.0
+  * add test case for customizer
+  * update composer dependencies
+  * change from protected variable to public variable for unit test
+  * add timeout-minutes to workflows
+  * add phpunit-polyfills
+  * tested up to 5.8.0
 * Version 1.2.0
-	* tested up to 5.7.0
-	* add composer scripts
-	* update japanese translation
-	* update pot
-	* add test case
-	* change constant name
-	* add sponsor link
-	* add FUNDING.yml
-	* add donate link
-	* update wordpress-test-matrix
-	* add GitHub actions for CI/CD, remove .travis.yml
+  * tested up to 5.7.0
+  * add composer scripts
+  * update japanese translation
+  * update pot
+  * add test case
+  * change constant name
+  * add sponsor link
+  * add FUNDING.yml
+  * add donate link
+  * update wordpress-test-matrix
+  * add GitHub actions for CI/CD, remove .travis.yml
 * Version 1.1.2
-	* rename sanitize_callback function from sanitize_checkbox to sanitize_boolean
-	* fix indent and reformat with phpcs and phpcbf
-	* add composer.json for test
-	* add static code analysis config
+  * rename sanitize_callback function from sanitize_checkbox to sanitize_boolean
+  * fix indent and reformat with phpcs and phpcbf
+  * add composer.json for test
+  * add static code analysis config
 * Version 1.1.1
-	* fix access modifier
-	* fix tests
-	* fix PHPDoc comment
-	* fix filter nav_menu_trim_get_options and nav_menu_trim_get_option
-	* change to add_action with load_textdomain
-	* add sanitize_checkbox
+  * fix access modifier
+  * fix tests
+  * fix PHPDoc comment
+  * fix filter nav_menu_trim_get_options and nav_menu_trim_get_option
+  * change to add_action with load_textdomain
+  * add sanitize_checkbox
 * Version 1.1.0
-	* update screenshot
-	* fix PHPDoc comment
-	* remove $languages_path
-	* fix .travis.yml
-	* fix tests
-	* add nav_menu_submenu_css_class function
-	* fix get_options function
-	* add default_options
-	* fix load_textdomain
-	* rename funtion name from trim_css_class to trim_menu_css_class
+  * update screenshot
+  * fix PHPDoc comment
+  * remove $languages_path
+  * fix .travis.yml
+  * fix tests
+  * add nav_menu_submenu_css_class function
+  * fix get_options function
+  * add default_options
+  * fix load_textdomain
+  * rename funtion name from trim_css_class to trim_menu_css_class
 * Version 1.0.2
-	* fix tests
-	* fix data validation via wp_kses
-	* change output css to here document
-	* fix option detect
-	* change add_filter from plugin_action_links to plugin_action_links_{$plugin_file}
-	* add init function
-	* fix codesniffer.ruleset.xml
+  * fix tests
+  * fix data validation via wp_kses
+  * change output css to here document
+  * fix option detect
+  * change add_filter from plugin_action_links to plugin_action_links_{$plugin_file}
+  * add init function
+  * fix codesniffer.ruleset.xml
 * Version 1.0.1
-	* fixed: fix .travis.yml
-	* fixed: fix trim_css_class function
-	* fixed: check exists class
+  * fixed: fix .travis.yml
+  * fixed: fix trim_css_class function
+  * fixed: check exists class
 * Version 1.0.0
-	* initial release
+  * initial release
 
 ## Upgrade Notice
 
+* Version 1.2.5
+  * Requires at least version 5.9 of the WordPress
+  * Requires PHP version 7.4
 * Version 1.2.2
-	* Requires at least version 4.9 of the WordPress
-	* Requires PHP version 5.6
+  * Requires at least version 4.9 of the WordPress
+  * Requires PHP version 5.6
 * Version 1.1.1
-	* Requires at least version 3.8 of the WordPress
+  * Requires at least version 3.8 of the WordPress
 
 ## License
 

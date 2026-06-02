@@ -78,10 +78,23 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function load_textdomain() {
+		global $wp_version;
 		$loaded = $this->nav_menu_trim->load_textdomain();
-		$this->assertFalse( $loaded );
+		if ( version_compare( (string) $wp_version, '6.7', '>=' ) ) {
+			$this->assertTrue( $loaded );
+		}
+		else {
+			$this->assertFalse( $loaded );
+		}
+	}
 
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function load_textdomain_change() {
 		unload_textdomain( 'nav-menu-trim' );
+		$this->assertFalse( isset( $l10n[ 'nav-menu-trim' ] ) );
 
 		add_filter( 'locale', [ $this, '_change_locale' ] );
 		add_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ], 10, 2 );
@@ -89,10 +102,13 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 		$loaded = $this->nav_menu_trim->load_textdomain();
 		$this->assertTrue( $loaded );
 
+		$this->assertSame( 'ja', get_locale() );
+
 		remove_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ] );
 		remove_filter( 'locale', [ $this, '_change_locale' ] );
 
 		unload_textdomain( 'nav-menu-trim' );
+		$this->assertFalse( isset( $l10n[ 'nav-menu-trim' ] ) );
 	}
 
 	/**
@@ -104,7 +120,7 @@ class Test_Nav_Menu_Trim_Basic extends WP_UnitTestCase {
 
 	function _change_textdomain_mofile( $mofile, $domain ) {
 		if ( $domain === 'nav-menu-trim' ) {
-			$locale = determine_locale();
+			$locale = get_locale();
 			$mofile = plugin_dir_path( __NAV_MENU_TRIM__ ) . 'languages/nav-menu-trim-' . $locale . '.mo';
 
 			$this->assertSame( $locale, get_locale() );
